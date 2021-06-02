@@ -1811,7 +1811,7 @@ pre .javascript .function {
   margin: 5px 0;
 }
 .footer .icon-animate {
-  animation: icon-animate 1.2s ease-in-out infinite;
+  animation: icon-animate 1.5s ease-in-out infinite;
 }
 .paginator {
   font-size: 1rem;
@@ -1896,7 +1896,7 @@ pre .javascript .function {
   font-size: 2rem;
   line-height: 1.8;
   text-align: center;
-  color: var(--default-text-color);
+  color: #f5f5f5;
 }
 @media (max-width: 780px) {
   .first-screen-container .content .description {
