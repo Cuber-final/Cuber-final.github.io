@@ -12,7 +12,7 @@
   background-color: rgba(0,0,0,0.3);
 }
 .banner .page-header {
-  color: #fff;
+  color: var(--page-header-text-color);
   max-width: calc(960px - 6rem);
   width: 80%;
 }
@@ -360,19 +360,22 @@ img[lazyload] {
 }
 :root {
   --color-mode: 'light';
-  --body-bg-color: #eee;
-  --board-bg-color: #fff;
-  --text-color: #3c4858;
-  --sec-text-color: #718096;
-  --post-text-color: #2c3e50;
-  --post-heading-color: #1a202c;
-  --post-link-color: #0366d6;
-  --link-hover-color: #30a9de;
-  --link-hover-bg-color: #f8f9fa;
-  --navbar-bg-color: #2f4154;
-  --navbar-text-color: #fff;
+  --body-bg-color: #264653;
+  --board-bg-color: #287271;
+  --text-color: #E9C46A;
+  --sec-text-color: #d0d0d0;
+  --post-text-color: #fff;
+  --post-heading-color: #EC8357;
+  --post-link-color: #E9C46A;
+  --link-hover-color: #BABB74;
+  --link-hover-bg-color: #264653;
+  --navbar-bg-color: #264653;
+  --navbar-text-color: #d0d0d0;
   --scrollbar-color: #c4c6c9;
   --scrollbar-hover-color: #a6a6a6;
+  --page-header-text-color: #fff;
+  --note-warning-bg-color: #599277;
+  --note-bg-color: #599277;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -1719,11 +1722,11 @@ post-custom {
   border-left: 0.35rem solid;
   border-radius: 0.25rem;
   margin: 1.5rem 0;
-  color: #3c4858;
+  color: var(--note-text-color);
   font-size: 0.9rem;
 }
 .note a {
-  color: #3c4858;
+  color: #E9C46A;
 }
 .note *:last-child {
   margin-bottom: 0;
@@ -1746,11 +1749,11 @@ note-default {
   border-color: #d9534f;
 }
 .note-warning {
-  background-color: #fdf8ea;
+  background-color: var(--note-warning-bg-color);
   border-color: #f0ad4e;
 }
 .note-info {
-  background-color: #eef7fa;
+  background-color: var(--note-bg-color);
   border-color: #428bca;
 }
 .note-light {
@@ -1763,7 +1766,7 @@ note-default {
   font-size: 85%;
   margin: 0;
   padding: 0.2em 0.4em;
-  color: #3c4858;
+  color: #E9C46A;
 }
 .label-default {
   background: #f7f7f7;
@@ -1917,6 +1920,7 @@ note-default {
 .tagcloud a {
   display: inline-block;
   padding: 0.5rem;
+  text-decoration: underline;
 }
 .tagcloud a:hover {
   color: var(--link-hover-color) !important;
