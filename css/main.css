@@ -1920,7 +1920,7 @@ note-default {
 .tagcloud a {
   display: inline-block;
   padding: 0.5rem;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .tagcloud a:hover {
   color: var(--link-hover-color) !important;
