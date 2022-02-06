@@ -1,0 +1,763 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/laker.svg">
+  <link rel="icon" href="/img/laker.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="google-site-verification" content="2lie0HSYu0BL3K9XgWOSvZIHL2IMueE6Xxix8D6E7TU" />
+  <meta name="baidu-site-verification" content="code-LwoxekwucD" />
+  
+  <meta name="theme-color" content="#264653">
+  <meta name="author" content="峰攀">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="向大佬学习之路，探寻卷积神经网络的底层逻辑，研究其应用意义与方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="卷积神经网络">
+<meta property="og:url" content="https://www.invacode.top/cnn01/">
+<meta property="og:site_name" content="峰攀">
+<meta property="og:description" content="向大佬学习之路，探寻卷积神经网络的底层逻辑，研究其应用意义与方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/conv_formula.4q71ccxhbuw0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/filter_layer.4wpha7xdfpu0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/act_funct01.3p64olg3c6g0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/act_funct02.2mpj1x9c67w0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/perceptron.6pca6r8y6u00.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/perceptron02.jgl5i2k5img.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/twoClass.26xvu0vj8i68.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/sysEntropy.199zm5g6ophc.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/cross_entropy.26s9saho95b4.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/useCE.3uufxzumxye0.webp">
+<meta property="article:published_time" content="2022-02-05T11:48:11.000Z">
+<meta property="article:modified_time" content="2022-02-06T08:28:50.021Z">
+<meta property="article:author" content="峰攀">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="卷积神经网络">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/conv_formula.4q71ccxhbuw0.webp">
+  
+  
+  <title>卷积神经网络 - 峰攀</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/monokai-sublime.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mac.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.invacode.top","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"KP6pnts6yruKOQpghfXRkz05-gzGzoHsz","app_key":"D7Tv6MORJ5VHKN6PDYoYNLDF","server_url":"https://kp6pnts6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>峰攀</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/labs/">
+                <i class="iconfont icon-exp-fill"></i>
+                新大陆
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/matrix.31qsai9476e0.webp') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="卷积神经网络">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-05 19:48" pubdate>
+        2022年2月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">卷积神经网络</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2 分钟前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="卷积神经网络"><a href="#卷积神经网络" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h2><h3 id="什么是卷积？"><a href="#什么是卷积？" class="headerlink" title="什么是卷积？"></a>什么是卷积？</h3><h4 id="卷积公式"><a href="#卷积公式" class="headerlink" title="卷积公式"></a>卷积公式</h4><ul>
+<li>公式如： <script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} f(\tau)g(x - \tau) d\tau</script></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/conv_formula.4q71ccxhbuw0.webp" srcset="/img/loading.gif" lazyload alt="卷积公式例子" title="卷积公式举例"></p>
+<ul>
+<li>结合视频中的例子，有如下解释<ul>
+<li>函数 $f(\tau)$ 表示一个人的进食情况或者简单的说是在某一时刻（横坐标）人进食的量化即吃了多少东西（纵坐标）</li>
+<li>$g(x - \tau)$ 则表示这个人的消化情况，反映经过多长时间后某一摄入的食物将消耗至原来的多少（比例)</li>
+<li>这两个函数的乘积反映出一个模型：在某一个时刻 $\tau$ 摄入食物，在另一时刻 $x$ 时，该食物在人体内还留存多少，那么求积分则是计算在 $x$ 时刻时，人体内所有食物存量的总和（因为在此之前，可能摄入在不同的时间摄入了不同量的食物，在到达同一时刻它们的剩余量也不尽相同）</li>
+<li>积分的上下限是非固定的，需要结合实际问题模型来确定，视频例子则是从0时刻开始到$+\infty $</li>
+</ul>
+</li>
+<li>由此我们可以得到卷积公式的物理意义体现在：一个系统具有不稳定的输入 $f$ 以及可以得到稳定的输出 $g$ ，积分求出系统的存量</li>
+</ul>
+<h4 id="卷积在计算机的应用"><a href="#卷积在计算机的应用" class="headerlink" title="卷积在计算机的应用"></a>卷积在计算机的应用</h4><ul>
+<li>对卷积公式应用的拓展延伸，卷积的意义更有深度，体现了在某一个时刻之前周围事物对该事物产生的影响的叠加</li>
+</ul>
+<h5 id="卷积神经网络-1"><a href="#卷积神经网络-1" class="headerlink" title="卷积神经网络"></a>卷积神经网络</h5><ul>
+<li>用于图像处理，探究周围像素点对某中心像素点产生的影响（不同像素点的影响贡献度可以不同，并且可以调解）</li>
+<li>卷积核的不同，对特征提取有不同的效果（卷积核的设置是人为的，赋予了计算机利用神经网络进行学习更强的目的性和主动性）<ul>
+<li>如下图中两种不同的卷积核能够提取保留出两个不同方向上的图片像素，效果明显；因此卷积核也有过滤器的说法</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/filter_layer.4wpha7xdfpu0.webp" srcset="/img/loading.gif" lazyload alt="过滤器" title="过滤器"></p>
+<ul>
+<li>经过卷积核的特征提取/过滤后，将这些保留的特征用于神经网络的输入以进行后续的训练<h3 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h3></li>
+<li>一个线性函数与一个激活函数的组合或者说，是在神经网络中隐藏层的一个单元（上一层的输出，下一层的输入）</li>
+<li>通过最简单的激活函数进行分类判断（二分类）；0-1 激活函数，只有两种选择，将实际问题仅仅局限在了“是或不是”的角度</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/act_funct01.3p64olg3c6g0.webp" srcset="/img/loading.gif" lazyload alt="感知机的简单例子" title="感知机"></p>
+<ul>
+<li>感知机不仅适用于<code>二维</code>的分类，还可以拓展至<code>N</code>维，都能找到如图中一样将所有的样本一分为二的<code>分界线</code>，如<code>三维空间</code>中将通过<code>二维平面</code>进行划分</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/act_funct02.2mpj1x9c67w0.webp" srcset="/img/loading.gif" lazyload alt="拓展至3维空间" title="拓展至3维空间"></p>
+<ul>
+<li>公式</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/perceptron.6pca6r8y6u00.webp" srcset="/img/loading.gif" lazyload alt="运算图示"></p>
+<script type="math/tex; mode=display">
+t即为输出，b为偏置单元，w_i为权重，x_i为输入单元\\
+t=f(\sum_{i=1}^nw_ix_i+b)=f(\mathbf{w}^T\mathbf{x})\\
+\sum_{i=1}^nw_ix_i+b 正是'分界线'\\
+其数值大小无非以下，直接带入激活函数便能得到判断结果\\
+\sum_{i=1}^nw_ix_i+b
+\begin{cases}
+\geq 0 \\[2ex]
+<0
+\end{cases}
+\\
+\mathbf{w}^T\mathbf{x} ，是上一公式的简化写法，在计算机中使用向量的计算（矩阵点积）</script><ul>
+<li>测试Latex语法的支持效果，以及检测BUG，hexo的LaTeX效果不如Typora，<strong>多行公式</strong>需要用 <code>\begin&#123;aligned&#125; ... \end&#123;aligned&#125;</code>，换行符 <code>\\</code> 和定位符 <code>&amp;</code>。添加了这些代码内容后，渲染正常如下</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\text{t即为输出，b为偏置单元，w_i为权重，x_i为输入单元}\\
+& t=f(\sum_{i=1}^nw_ix_i+b)=f(\mathbf{w}^T\mathbf{x})\\
+& \sum_{i=1}^nw_ix_i+b \text{正是'分界线'}\\
+& \text{其数值大小无非以下，直接带入激活函数便能得到判断结果}\\
+& 
+\sum_{i=1}^nw_ix_i+b
+\begin{cases}
+\geq 0 \\[2ex]
+<0
+\end{cases}
+\\
+& \mathbf{w}^T\mathbf{x} ，是上一公式的简化写法，在计算机中使用向量的计算（矩阵点积）
+\\
+\end{aligned}</script><p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/perceptron02.jgl5i2k5img.webp" srcset="/img/loading.gif" lazyload alt="演算解析"></p>
+<ul>
+<li>尽管感知机是一个通用的’模板’，可以通过线性函数和激活函数的组合，看似能够将所有的二分问题解决，但存在一种很致命的缺陷，那就是仅靠简单的感知机将无法解决分类<code>边界模糊</code>或<code>分类边界不易确定</code>的问题，如下图这种，分界线是<code>曲线</code>，而不是线性的分类问题。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/twoClass.26xvu0vj8i68.webp" srcset="/img/loading.gif" lazyload alt="特殊的例子" title="非线性的分类问题"></p>
+<ul>
+<li><p>解决办法</p>
+<ul>
+<li><p>多个感知机的组合搭配，可为什么这样就能够解决？</p>
+<ul>
+<li>模板形式简单，组合也不会特别难</li>
+</ul>
+</li>
+<li><p>低纬度升高纬度（待研究）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h3><h5 id="概述与特点的理解"><a href="#概述与特点的理解" class="headerlink" title="概述与特点的理解"></a>概述与特点的理解</h5><ul>
+<li>感知机的组合搭配</li>
+<li><p>激活函数 $sigmoid$，巧妙之处在于，问题不再是判断是非，而是判断达到目标的程度有多接近（概率）</p>
+<ul>
+<li>通俗点说，通过激活函数，每个输出判断一个用来测试的样本有多大的概率接近期望答案（比如，给一个图片，通过神经网络来判断有多大概率是猫，如果在此基础上附加一些概率的界限，比如当<code>是猫的概率</code>达到<code>90%</code>时，那就判定得出<code>是猫</code>的结论）</li>
+</ul>
+</li>
+<li><p>输出可以变为多个目标类型，也就是可以通过训练分类出多个目标（没有绝对统一的标准，但通过不断学习接近标准）</p>
+</li>
+</ul>
+<h5 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h5><ul>
+<li><p>作用是定量的去衡量两个模型之间的差别，这需要计算出来</p>
+</li>
+<li><p>常见计算方法</p>
+<ul>
+<li><p>最小二乘法</p>
+<ul>
+<li>为何在反向传播中用梯度下降法时，最小二乘法会带来不便？</li>
+</ul>
+</li>
+<li><p>极大似然估计法</p>
+<ul>
+<li>利用最大似然估计法的思想去寻找最接近<code>目标期望</code>的模型</li>
+<li>为何要前加负号反求最小值？</li>
+</ul>
+</li>
+<li><p>交叉熵 </p>
+<ul>
+<li>熵，系统的不确定性，熵值越大，不确定性越大；总系统的熵值则通过加权求和（求期望，每一部分对系统信息的贡献度不同，占比不同）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/sysEntropy.199zm5g6ophc.webp" srcset="/img/loading.gif" lazyload alt="系统熵值" title="系统熵值"></p>
+<ul>
+<li>散度 D~KL~ 的计算引出交叉熵的概念，下图计算的是以<code>系统P为基准的交叉熵</code>，由吉布斯不等式证明得出<code>系统P的交叉熵部分的数值恒大于P的系统熵值</code>，$H(P,Q)$ 便成了比较两个系统熵值的关键，其值越小意味着两个系统的差距越小</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/cross_entropy.26s9saho95b4.webp" srcset="/img/loading.gif" lazyload alt="交叉熵" title="交叉熵的推导过程"></p>
+<ul>
+<li>交叉熵运用至神经网络的推演</li>
+</ul>
+<blockquote>
+<ul>
+<li><p>$i$ 的数量取决于两系统的最大变量数</p>
+</li>
+<li><p>$p_i$ 表示要作为基准的模型数据，在识别猫图的例子中，就是每一张猫图的<code>是不是猫</code>即<code>0和1</code>数值标签，也是这个神经网络的输入</p>
+</li>
+<li><p>$q_i$ 表示要拿去和基准模型 比较的模型数据</p>
+</li>
+<li><p>计算机中的信息以二进制形式存储。，$log_2(x)$ 选择 以<code>2</code>为底数符合了计算机中的信息量单位<code>比特</code></p>
+</li>
+<li><p>将交叉熵与极大似然估计学习联系，可以看到很多相似的地方，但存在需要谨慎对待的不同点</p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>   <img src="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/useCE.3uufxzumxye0.webp" srcset="/img/loading.gif" lazyload alt="交叉熵应用" title="交叉熵应用"></p>
+<blockquote>
+<p><code>纠错</code>，上图中红框内的公式错误，经过检索交叉熵函数的定义以及视频评论区的大佬纠错，加深了理解，可以从以下角度理解<br>$x_i$ 表示输入的一个标签，在判断是不是猫的项目中，其取值只有两种即$x_1$ 代表是猫，$x_2$代表不是猫，应修改公式为</p>
+<ul>
+<li>由此我推测，对于识别多个分类的项目，是不是对应多个输入的标签来求交叉熵实现损失函数计算？</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& H(P,Q)\\
+& =-\sum_{i=1}^n (x_i·\log_2y_i)\\
+& =-(x_1·\log_2y_1+x_2·\log_2y_2)\\
+& x_1=1 \quad x_2=0 \quad y_2=1-y_1
+\end{aligned}</script></blockquote>
+<h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><hr>
+<h4 id="探究神经网络的前向传播与后向传播-的原理与公式的推导"><a href="#探究神经网络的前向传播与后向传播-的原理与公式的推导" class="headerlink" title="探究神经网络的前向传播与后向传播 的原理与公式的推导"></a>探究神经网络的前向传播与后向传播 的原理与公式的推导</h4><h5 id="思考一，神经网络的由来，神经网络前向传播的公式为何是这样？"><a href="#思考一，神经网络的由来，神经网络前向传播的公式为何是这样？" class="headerlink" title="思考一，神经网络的由来，神经网络前向传播的公式为何是这样？"></a>思考一，神经网络的由来，神经网络前向传播的公式为何是这样？</h5><ul>
+<li>神经网络的实现意义在于，我们能否基于给定的输入，通过某种确定的函数变换（模型）得到一个对应的输出，但有这么些特点<ul>
+<li>模型不是一开始就确定的，而是通过大量的输入并与目标样本的比对来评估并且学习，最终找到合适的模型，这就是和我们人脑学习一样的过程，神经网络就是一个函数拟合器</li>
+<li>为什么要用<strong>权重</strong>×<strong>输入</strong>的方式来计算？<ul>
+<li>进行结果预测的时候，权重反映了某一信息对预测的贡献度（相关性），因此当存在多个输入的时候，由于每一个输入都具有自己的权重，要具备更准确的输出，就需要<strong>加权和</strong>，对于每一项输入，计算其局部的<strong>权重</strong>×<strong>输入</strong>，最后求总和</li>
+<li>运用向量乘法实现</li>
+</ul>
+</li>
+<li>前向传播的计算公式和过程？<ul>
+<li>上一层计算得到的输出作为下一层的输入，重复这一过程直到求出最后一层的结果</li>
+<li>梯度下降，将一个维度（方向）拆分为多个分量的向量和（每一个分量都是沿着其对应的梯度方向，数值变化最快），也就是求偏导，还涉及链式求导法则</li>
+</ul>
+</li>
+<li>后向传播的计算思路与推导？<ul>
+<li>根据输出求关于输入x的梯度，链式求导，列出函数嵌套</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">卷积神经网络</a>
+                    
+                      <a class="hover-with-bg" href="/tags/AI/">AI</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/deployBlog/">
+                        <span class="hidden-mobile">部署博客和优化配置</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <p>CopyRight © 2021 ~ 2022</p> <a href="https://github.com/Cuber-final" target="_blank" rel="nofollow noopener"><span>Sherlock</span></a> <i class="iconfont icon-mini-program-fill"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">网站已运行...</span> <script src="/js/duration.js"></script> </div>
+
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- LeanCloud 统计PV -->
+        <span id="leancloud-site-pv-container" style="display: none">
+            总访问量 
+            <span id="leancloud-site-pv"></span>
+             次
+          </span>
+      
+      
+        <!-- LeanCloud 统计UV -->
+        <span id="leancloud-site-uv-container" style="display: none">
+            总访客数 
+            <span id="leancloud-site-uv"></span>
+             人
+          </span>
+      
+
+    
+  </div>
+
+
+  
+  <!-- 备案信息 -->
+  <div class="beian">
+    <span>
+      <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+        粤ICP备2020102811号
+      </a>
+    </span>
+    
+  </div>
+
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+<!-- 这里修改不蒜子的使用，看能否初始化-->
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
