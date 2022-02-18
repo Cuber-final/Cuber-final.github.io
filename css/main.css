@@ -388,7 +388,7 @@ img[lazyload] {
     --sec-text-color: #a7a9ad;
     --post-text-color: #c4c6c9;
     --post-heading-color: #c4c6c9;
-    --post-link-color: #1589e9;
+    --post-link-color: #E9C46A;
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
     --navbar-bg-color: #1f3144;
@@ -461,7 +461,7 @@ img[lazyload] {
   --sec-text-color: #a7a9ad;
   --post-text-color: #c4c6c9;
   --post-heading-color: #c4c6c9;
-  --post-link-color: #1589e9;
+  --post-link-color: #E9C46A;
   --link-hover-color: #30a9de;
   --link-hover-bg-color: #364151;
   --navbar-bg-color: #1f3144;
@@ -906,7 +906,7 @@ label {
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  color: var(--post-heading-color);
+  color: #abc0d0;
   font-weight: bold;
   margin-bottom: 0.75em;
   margin-top: 2em;
@@ -921,6 +921,9 @@ label {
 }
 .markdown-body a {
   color: var(--post-link-color);
+  background-color: inherit;
+  font-weight: 600;
+  text-decoration: none;
 }
 .markdown-body hr {
   height: 0.2em;
@@ -932,16 +935,26 @@ label {
 .markdown-body pre {
   font-size: 85% !important;
 }
-.markdown-body pre code {
+.markdown-body code {
+  overflow-x: auto;
+  line-height: 1.5;
+  color: #e96900;
+  tab-size: 4;
+  background-color: rgba(34,37,38,0.05);
+  font-family: "Fira Code", Consolas, "Lucida Console", "Courier", monospace, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.markdown-body pre > code {
+  color: #f8f8f2;
   overflow-x: auto;
   line-height: 1.5;
   border-radius: 3px;
   tab-size: 4;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-.markdown-body pre .mermaid {
+.markdown-body .mermaid {
   text-align: center;
 }
-.markdown-body pre .mermaid > svg {
+.markdown-body .mermaid > svg {
   min-width: 100%;
 }
 .markdown-body p > img,
@@ -955,6 +968,10 @@ label {
 }
 .markdown-body blockquote {
   color: var(--sec-text-color);
+  padding: 0.5rem 1rem;
+  border-left: 8px solid #2f845e;
+  background-color: #222526;
+  border-radius: 4px;
 }
 .markdown-body details {
   cursor: pointer;
@@ -1278,6 +1295,7 @@ mjx-container,
   overflow-x: auto;
   overflow-y: hidden !important;
   padding: 0.5em 0;
+  color: #fff;
 }
 mjx-container:focus,
 .mjx-container:focus,
