@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.invacode.top/cnn01/</loc>
+    <loc>https://cuber-final.github.io/cnn01/</loc>
     
     <lastmod>2022-02-18</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/deployBlog/</loc>
+    <loc>https://cuber-final.github.io/deployBlog/</loc>
     
     <lastmod>2022-02-05</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/django-dev/</loc>
+    <loc>https://cuber-final.github.io/django-dev/</loc>
     
     <lastmod>2022-02-05</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/about/</loc>
+    <loc>https://cuber-final.github.io/about/</loc>
     
     <lastmod>2022-01-28</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/thinkTimes/</loc>
+    <loc>https://cuber-final.github.io/thinkTimes/</loc>
     
     <lastmod>2022-01-28</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/coding01/</loc>
+    <loc>https://cuber-final.github.io/coding01/</loc>
     
     <lastmod>2022-01-21</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/</loc>
+    <loc>https://cuber-final.github.io/tags/</loc>
     
     <lastmod>2021-05-29</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.invacode.top/categories/</loc>
+    <loc>https://cuber-final.github.io/categories/</loc>
     
     <lastmod>2021-05-29</lastmod>
     
@@ -75,58 +75,58 @@
   
 
   <url>
-    <loc>https://www.invacode.top/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>https://www.invacode.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/C/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/Web-Dev/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/AI/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/%E5%88%9B%E6%96%B0%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/C/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/thoughts/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/Web-Dev/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/%E5%88%9B%E6%96%B0%E4%BC%98%E5%8C%96/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/tags/thoughts/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/tags/AI/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -134,29 +134,29 @@
 
   
   <url>
-    <loc>https://www.invacode.top/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/categories/%E5%88%B7%E9%A2%98%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/categories/%E5%88%B7%E9%A2%98%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/categories/%E6%80%9D%E8%80%83%E4%B8%8E%E6%9D%83%E8%A1%A1/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.invacode.top/categories/%E6%80%9D%E8%80%83%E4%B8%8E%E6%9D%83%E8%A1%A1/</loc>
-    <lastmod>2022-02-18</lastmod>
+    <loc>https://cuber-final.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2022-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
