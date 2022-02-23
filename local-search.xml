@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>HRRN01</title>
+    <link href="/HRRN01/"/>
+    <url>/HRRN01/</url>
+    
+    <content type="html"><![CDATA[<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width,initial-scale=1.0">    <meta http-equiv="X-UA-Compatible" content="ie=edge">    <title>非抢占式HRRN</title>    <style>        table {            width: 800px;            margin: 200px auto;            top: 200px;            text-align: center;            border-collapse: collapse;            font-size: 20px;            position: absolute;            border: 1px solid black;        }                thead tr {            height: 20px;            background-color: skyblue;        }                tbody tr {            height: 20px;        }                tbody td {            border-bottom: 1px solid black;            font-size: 20px;            /* color: blue; */        }                .slid {            background-color: red;        }                .over {            background-color: rgb(107, 96, 98);        }                .test {            font-size: 28px;            background-color: red;            width: 100px;            margin: 10px;            color: white;            text-align: center;        }                button {            font-size: 24px;        }                .potion_chart_1 {            right: 50px;            top: 1px;            position: absolute;        }                .potion_chart_2 {            right: 50px;            top: 410px;            position: absolute;        }    </style>    <!-- 引入 echarts.js -->    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script></head><body>    <table id='chart'>        <thead>            <tr>                <th>进程</th>                <th>服务时间/s</th>                <th>到达时间/s</th>                <th>响应比</th>                <th>状态</th>                <th>周转时间/s</th>                <th>归一化周转时间</th>            </tr>        </thead>        <tbody id="body">        </tbody>    </table>    <!-- <button id="date">日期</button>    <div id="date_view"> </div> -->    <button id="btn_time">开始</button>    <button id="time_restart">重置</button>    <button id="pause">暂停</button>    <!--  <button id="last">上一步</button>    <button id="next">下一步</button> -->    <div id="time" class='test'>0</div>    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->    <div id="main" class="potion_chart_1" style="width: 700px;height:400px;"></div>    <div id="main_1" class="potion_chart_2" style="width: 700px;height:400px;"></div>    <script src="/js/echarts_view.js"></script>    <script src="/js/echarts_process.js"></script>    <script src="/js/test.js"></script></body></html>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>HRRN02</title>
+    <link href="/HRRN02/"/>
+    <url>/HRRN02/</url>
+    
+    <content type="html"><![CDATA[<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width,initial-scale=1.0">    <meta http-equiv="X-UA-Compatible" content="ie=edge">    <title>抢占式HRRN</title>    <style>        table {            width: 900px;            margin: 1px auto;            top: 1px;            left: 300px;            text-align: center;            border-collapse: collapse;            font-size: 20px;            position: absolute;            border: 1px solid black;        }                thead tr {            height: 20px;            background-color: skyblue;        }                tbody tr {            height: 20px;        }                tbody td {            border-bottom: 1px solid black;            font-size: 20px;            /* color: blue; */        }                .test {            font-size: 28px;            background-color: red;            width: 100px;            margin: 10px;            right: 0px;            top: 50px;            color: white;            text-align: center;        }                button {            font-size: 24px;        }                .potion_chart_1 {            right: 20px;            top: 440px;            position: absolute;        }                .potion_chart_2 {            left: 20px;            top: 400px;            position: absolute;        }                .slid {            background-color: red;        }                .over {            background-color: rgb(107, 96, 98);        }                .nono {            background-color: white;        }                .b_start {            right: 100px;            top: 0px;        }                .b_stop {            right: 60px;            top: 0px;        }                .b_restart {            right: 10px;            top: 0px;        }    </style>    <!-- 引入 echarts.js -->    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script></head><body>    <table id='chart'>        <thead>            <tr>                <th>进程</th>                <th>到达时间/s</th>                <th>服务时间/s</th>                <th>还需时间/s</th>                <th>等待时间/s</th>                <th>响应比</th>                <th>状态</th>                <th>周转时间/s</th>                <th>归一化周转时间</th>            </tr>        </thead>        <tbody id="body">        </tbody>    </table>    <div>        <button id="btn_time">开始</button>        <button id="time_restart">重置</button>        <button id="pause">暂停</button>    </div>    <div id="time" class="test">0</div>    <div id="main_2" class="potion_chart_1" style="width: 800px;height:400px;"></div>    <div id="main_3" class="potion_chart_2" style="width: 800px;height:400px;"></div>    <script src="/js/echarts_view_t.js"></script>    <script src="/js/echarts_process_t.js"></script>    <script src="/js/hrrn_t.js"></script></body></html>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>osTest</title>
+    <link href="/osTest/"/>
+    <url>/osTest/</url>
+    
+    <content type="html"><![CDATA[<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    <meta name="description" content="HNUSTS们的OS算法演示系统">    <meta name="author" content="18物联网二班 肖红林">    <meta name="generator" content="NewYear v0.1">    <title>hnust.OS</title></head><body>    <h1 class="my">HNUSTS的OS算法演示系统</h5>        <a href="/HRRN01">非抢占式HRRN</a>        <a href="/HRRN02">抢占式HRRN</a>        <footer>            <small>湖南科技大学</small>        </footer>        <footer>            <small>&copy; 2018-2022</small>        </footer></body></html>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>卷积神经网络</title>
     <link href="/cnn01/"/>
     <url>/cnn01/</url>
