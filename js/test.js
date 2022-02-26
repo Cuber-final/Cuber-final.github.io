@@ -81,7 +81,7 @@ function start(wh) {
     var second = wh;
 
     if (second == 0) {
-        creatProgress();
+        //creatProgress();
         updata(second);
         numb = celect(0);
         fin_time = -1;
@@ -107,17 +107,17 @@ function start(wh) {
         var time = document.getElementById('time');
         time.innerHTML = second;
     }
-    int = setInterval(timer, 200);
+    int = setInterval(timer, 2000);
 }
 
 function progress_start(num, start_time) { //某个进程开始运行
     parr.key_statue[num] = 1;
     var ik = start_time + parr.key_ntime[num];
     console.log('start任务：' + num + ' 开始时间：' + start_time + ' 结束时间：' + ik);
-    var p = document.querySelector('body');
-    var em = document.createElement("li");
-    em.innerHTML = 'start : P' + num + ' *** 开始时间：' + start_time + 's *** 结束时间：' + ik + 's';
-    p.insertBefore(em, p.nextElementSibling);
+    // var p = document.querySelector('body');
+    // var em = document.createElement("li");
+    // em.innerHTML = 'start : P' + num + ' *** 开始时间：' + start_time + 's *** 结束时间：' + ik + 's';
+    // p.insertBefore(em, p.nextElementSibling);
     return ik;
 }
 
@@ -203,12 +203,21 @@ function updata(second) {
 var btn_start = document.getElementById('btn_time');
 btn_start.onclick = function() { //开始启动计时
     document.getElementById("btn_time").setAttribute("disabled", true); //设置不可点击
+    document.getElementById("pause").removeAttribute("disabled");
     //开始前先清除表格中的所有条数据
-    var h = document.getElementById('body');
-    var child = h.childNodes;
-    for (var i = child.length - 1; i >= 0; i--)
-        h.removeChild(child[i]); //删除节点
+    // var h = document.getElementById('body');
+    // var child = h.childNodes;
+    // for (var i = child.length - 1; i >= 0; i--)
+    //     h.removeChild(child[i]); //删除节点
     start(0);
+}
+
+//随机生成进程事件
+var btn_random = document.getElementById('random');
+btn_random.onclick = function() { //开始启动计时
+    document.getElementById("random").setAttribute("disabled", true); //设置不可点击
+    document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    creatProgress();
 }
 
 //通过更改option中的data数组内的数据来实时更新条形图响应比的数据
@@ -226,7 +235,10 @@ function change_bar(a) {
 //重置开始，重新开始，重置按钮响应事件
 var btn_re = document.getElementById('time_restart');
 btn_re.onclick = function() {
-    document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    //document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    document.getElementById("random").removeAttribute("disabled"); //去掉不可点击
+    document.getElementById("btn_time").setAttribute("disabled", true); //设置不可点击
+    document.getElementById("pause").setAttribute("disabled", true);
     //停止 setInterval() 方法
     clearInterval(int);
     //重置条形图echarts_view
@@ -237,11 +249,6 @@ btn_re.onclick = function() {
     for (var k = 0; k < b; k++)
         option_1.series.pop();
     option_1 && myChart_1.setOption(option_1, true);
-
-    //清除进程开始信息的列表数据
-    var lii = document.querySelectorAll('li');
-    for (var j = 0; j < lii.length; j++)
-        document.querySelector('body').removeChild(lii[j]);
     //时间计时器清零
     var time = document.getElementById('time');
     time.innerHTML = 0;
@@ -250,6 +257,13 @@ btn_re.onclick = function() {
     var child = h.childNodes;
     for (var i = child.length - 1; i >= 0; i--)
         h.removeChild(child[i]); //删除节点
+
+    //清除进程开始信息的列表数据
+    // var lii = document.querySelectorAll('li');
+    // for (var j = 0; j < lii.length; j++)
+    //     document.querySelector('body').removeChild(lii[j]);
+
+
 }
 
 //暂停继续按钮事件

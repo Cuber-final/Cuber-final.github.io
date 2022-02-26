@@ -78,10 +78,10 @@ function creatProgress() {
 var numb, fin_time;
 var run_time = [];
 
-function start(wh) {
+function start(wh, key) {
     var second = wh;
-    if (second == 0) {
-        creatProgress();
+    if (second == 0 && key == 0) {
+        //creatProgress();
         updata(second);
         //updata(second);
         numb = celect(0);
@@ -90,6 +90,7 @@ function start(wh) {
             progress_start(numb, 0);
             run_time[numb] = second;
         }
+        updata(second);
 
     }
 
@@ -135,7 +136,7 @@ function start(wh) {
         var time = document.getElementById('time');
         time.innerHTML = second;
     }
-    int = setInterval(timer, 500);
+    int = setInterval(timer, 2000);
 }
 
 
@@ -279,12 +280,21 @@ function updata(second) {
 var btn_start = document.getElementById('btn_time');
 btn_start.onclick = function() { //开始启动计时
     document.getElementById("btn_time").setAttribute("disabled", true); //设置不可点击
-    //开始前先清除表格中的所有条数据
-    var h = document.getElementById('body');
-    var child = h.childNodes;
-    for (var i = child.length - 1; i >= 0; i--)
-        h.removeChild(child[i]); //删除节点
-    start(0);
+    document.getElementById("pause").removeAttribute("disabled");
+    // //开始前先清除表格中的所有条数据
+    // var h = document.getElementById('body');
+    // var child = h.childNodes;
+    // for (var i = child.length - 1; i >= 0; i--)
+    //     h.removeChild(child[i]); //删除节点
+    start(0, 0);
+}
+
+//随机生成进程事件
+var btn_random = document.getElementById('random');
+btn_random.onclick = function() { //开始启动计时
+    document.getElementById("random").setAttribute("disabled", true); //设置不可点击
+    document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    creatProgress();
 }
 
 //暂停继续按钮事件
@@ -299,7 +309,7 @@ btn_stop.onclick = function() {
         var time = document.getElementById('time');
         var con = time.innerHTML;
         this.innerHTML = '暂停';
-        start(con);
+        start(con, 1);
     }
 }
 
@@ -320,7 +330,10 @@ var btn_re = document.getElementById('time_restart');
 btn_re.onclick = function() {
 
     run_time.length = 0;
-    document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    //document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    document.getElementById("random").removeAttribute("disabled"); //去掉不可点击
+    document.getElementById("btn_time").setAttribute("disabled", true); //设置不可点击
+    document.getElementById("pause").setAttribute("disabled", true);
     //停止 setInterval() 方法
     clearInterval(int);
     //重置条形图echarts_view
