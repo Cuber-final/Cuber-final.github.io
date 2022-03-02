@@ -11,6 +11,14 @@
     <content type="html"><![CDATA[<!doctype html><html lang="zh-CN"><head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->    <meta name="description" content="">    <meta name="author" content="">    <link rel="icon" href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/favicon.ico">    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/dashboard/">    <title>OS进程调度算法演示by肖红林</title>    <!-- Bootstrap core CSS -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/css/bootstrap.min.css" rel="stylesheet">    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">    <!-- Custom styles for this template -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/examples/dashboard/dashboard.css" rel="stylesheet">    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->    <!--[if lt IE 9]><script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie-emulation-modes-warning.js"></script>    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>    <![endif]-->    <!-- 引入 echarts.js -->    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>    <style>        .slid {            background-color: rgb(17, 227, 235);        }                .over {            background-color: rgb(12, 165, 63);        }                .test {            font-size: 28px;            background-color: rgb(24, 80, 184);            width: 100px;            margin: 10px;            color: white;            text-align: center;        }    </style></head><body>    <nav class="navbar navbar-inverse navbar-fixed-top">        <div class="container-fluid">            <div class="navbar-header">                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">            <span class="sr-only">Toggle navigation</span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>          </button>                <a class="navbar-brand" href="#">OS进程调度算法演示系统</a>            </div>            <div id="navbar" class="navbar-collapse collapse">                <ul class="nav navbar-nav navbar-right">                    <li><a href="/welcome_hnust">Home</a></li>                    <li><a href="#">Settings</a></li>                    <li><a href="#">Profile</a></li>                    <li><a href="#">Help</a></li>                </ul>                <!-- <form class="navbar-form navbar-right">                    <input type="text" class="form-control" placeholder="Search...">                </form> -->            </div>        </div>    </nav>    <div class="container-fluid">        <div class="row">            <div class="col-sm-3 col-md-2 sidebar">                <ul class="nav nav-sidebar">                    <li><a href="/bootstrap">非抢占式HRRN<span class="sr-only">(current)</span></a></li>                    <li class="active"><a href="#">抢占式HRRN</a></li>                    <li><a href="#">先来先服务FCFS</a></li>                    <li><a href="#">最短剩余时间SRT</a></li>                </ul>            </div>            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">                <div class="row placeholders">                    <button id="btn_time" type="button" class="btn btn-primary" disabled="disabled">开始</button>                    <button id="time_restart" type="button" class="btn btn-danger">重置</button>                    <button id="pause" type="button" class="btn btn-warning" disabled="disabled">暂停</button>                    <button id="random" type="button" class="btn btn-info">随机生成进程</button>                    <button id="inputt" type="button" class="btn btn-info">输入进程数据</button>                    <div id="time" class='test'>0</div>                </div>                <div class="table">                    <table class="table table-bordered" id='chart'>                        <thead>                            <tr>                                <th>进程</th>                                <th>到达时间/s</th>                                <th>服务时间/s</th>                                <th>剩余运行时间/s</th>                                <th>等待时间/s</th>                                <th>响应比</th>                                <th>状态</th>                                <th>周转时间/s</th>                                <th>归一化周转时间</th>                            </tr>                        </thead>                        <tbody id="body">                        </tbody>                    </table>                </div>                <div class="row placeholders">                    <div class="col-xs-6 col-sm-3 placeholder">                        <div id="main_2" style="width: 600px;height:400px;"></div>                    </div>                </div>                <div class="row placeholders">                    <div class="col-xs-6 col-sm-3 placeholder">                        <div id="main_3" style="width: 600px;height:400px;"></div>                    </div>                </div>            </div>        </div>    </div>    <!-- Bootstrap core JavaScript    ================================================== -->    <!-- Placed at the end of the document so the pages load faster -->    <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>    <script>        window.jQuery || document.write('<script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/jquery.min.js"><\/script>')    </script>    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/js/bootstrap.min.js"></script>    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/holder.min.js"></script>    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js"></script>    <script type="text/javascript" src="/js/echarts_view_t.js"></script>    <script type="text/javascript" src="/js/echarts_process_t.js"></script>    <script type="text/javascript" src="/js/hrrn_t.js"></script></body></html>]]></content>
     
     
+    <categories>
+      
+      <category>demos</category>
+      
+      <category>OS</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -24,6 +32,14 @@
     <content type="html"><![CDATA[<!doctype html><html lang="zh-CN"><head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->    <meta name="description" content="">    <meta name="author" content="">    <link rel="icon" href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/favicon.ico">    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/dashboard/">    <title>OS进程调度算法演示by肖红林</title>    <!-- Bootstrap core CSS -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/css/bootstrap.min.css" rel="stylesheet">    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">    <!-- Custom styles for this template -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/examples/dashboard/dashboard.css" rel="stylesheet">    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->    <!--[if lt IE 9]><script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie-emulation-modes-warning.js"></script>    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>    <![endif]-->    <!-- 引入 echarts.js -->    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>    <style>        .slid {            background-color: rgb(17, 227, 235);        }                .over {            background-color: rgb(12, 165, 63);        }                .test {            font-size: 28px;            background-color: rgb(15, 87, 168);            width: 100px;            margin: 10px;            color: white;            text-align: center;        }    </style></head><body>    <nav class="navbar navbar-inverse navbar-fixed-top">        <div class="container-fluid">            <div class="navbar-header">                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">            <span class="sr-only">Toggle navigation</span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>          </button>                <a class="navbar-brand" href="#">OS进程调度算法演示系统</a>            </div>            <div id="navbar" class="navbar-collapse collapse">                <ul class="nav navbar-nav navbar-right">                    <li><a href="/welcome_hnust">Home</a></li>                    <li><a href="#">Settings</a></li>                    <li><a href="#">Profile</a></li>                    <li><a href="#">Help</a></li>                </ul>                <!-- <form class="navbar-form navbar-right">                    <input type="text" class="form-control" placeholder="Search...">                </form> -->            </div>        </div>    </nav>    <div class="container-fluid">        <div class="row">            <div class="col-sm-3 col-md-2 sidebar">                <ul class="nav nav-sidebar">                    <li class="active"><a href="#">非抢占式HRRN<span class="sr-only">(current)</span></a></li>                    <li><a href="/HRRN_P">抢占式HRRN</a></li>                    <li><a href="#">先来先服务FCFS</a></li>                    <li><a href="#">最短剩余时间SRT</a></li>                </ul>            </div>            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">                <div class="row placeholders">                    <button id="btn_time" type="button" class="btn btn-primary" disabled="disabled">开始</button>                    <button id="time_restart" type="button" class="btn btn-danger">重置</button>                    <button id="pause" type="button" class="btn btn-warning" disabled="disabled">暂停</button>                    <button id="random" type="button" class="btn btn-info">随机生成进程</button>                    <button id="inputt" type="button" class="btn btn-info">输入进程数据</button>                    <div id="time" class='test'>0</div>                </div>                <!-- <form class="form-inline">                    <div class="form-group">                        <label class="sr-only" for="exampleInputEmail3">进程到达时间</label>                        <input class="form-control" id="exampleInputEmail3" placeholder="进程到达时间">                    </div>                    <div class="form-group">                        <label class="sr-only" for="exampleInputPassword3">进程服务时间</label>                        <input class="form-control" id="exampleInputPassword3" placeholder="进程服务时间">                    </div>                    <button type="submit" class="btn btn-default">插入</button>                </form> -->                <div class="table">                    <table class="table table-bordered" id='chart'>                        <thead>                            <tr>                                <th>进程</th>                                <th>服务时间/s</th>                                <th>到达时间/s</th>                                <th>响应比</th>                                <th>状态</th>                                <th>周转时间/s</th>                                <th>归一化周转时间</th>                            </tr>                        </thead>                        <tbody id="body">                        </tbody>                    </table>                </div>                <div class="row placeholders">                    <div class="col-xs-6 col-sm-3 placeholder">                        <div id="main" style="width: 600px;height:400px;"></div>                    </div>                </div>                <div class="row placeholders">                    <div class="col-xs-6 col-sm-3 placeholder">                        <div id="main_1" style="width: 600px;height:400px;"></div>                    </div>                </div>            </div>        </div>    </div>    <!-- Bootstrap core JavaScript    ================================================== -->    <!-- Placed at the end of the document so the pages load faster -->    <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>    <script>        window.jQuery || document.write('<script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/jquery.min.js"><\/script>')    </script>    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/js/bootstrap.min.js"></script>    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/holder.min.js"></script>    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js"></script>    <script src="/js/echarts_view.js"></script>    <script src="/js/echarts_process.js"></script>    <script src="/js/test.js"></script></body></html>]]></content>
     
     
+    <categories>
+      
+      <category>demos</category>
+      
+      <category>OS</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -36,6 +52,14 @@
     
     <content type="html"><![CDATA[<!doctype html><html lang="zh-CN"><head>    <meta charset="utf-8">    <meta http-equiv="X-UA-Compatible" content="IE=edge">    <meta name="viewport" content="width=device-width, initial-scale=1">    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->    <meta name="description" content="">    <meta name="author" content="">    <link rel="icon" href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/favicon.ico">    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/cover/">    <title>Cover Template for Bootstrap</title>    <!-- Bootstrap core CSS -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/css/bootstrap.min.css" rel="stylesheet">    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">    <!-- Custom styles for this template -->    <link href="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/examples/cover/cover.css" rel="stylesheet">    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->    <!--[if lt IE 9]><script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie-emulation-modes-warning.js"></script>    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->    <!--[if lt IE 9]>      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>    <![endif]--></head><body>    <div class="site-wrapper">        <div class="site-wrapper-inner">            <div class="cover-container">                <div class="masthead clearfix">                    <div class="inner">                        <h3 class="masthead-brand">OS算法演示系统</h3>                        <nav>                            <ul class="nav masthead-nav">                                <li class="active"><a href="#">主页</a></li>                                <li><a href="#">Features</a></li>                                <li><a href="#">关于</a></li>                            </ul>                        </nav>                    </div>                </div>                <div class="inner cover">                    <h1 class="cover-heading">Welcome to湖南科技大学计算机学院操作系统算法演示系统</h1>                    <p class="lead">本部分演示旨在于通过直观可视的动画演示，揭示算法运行过程中的每一个细节，以此来帮助学习操作系统的同学从更顶层的层面去理解算法，加深对操作系统进程调度算法的理解</p>                    <p class="lead">                        <a href="/bootstrap" class="btn btn-lg btn-default">Start</a>                    </p>                </div>                <div class="mastfoot">                    <div class="inner">                        <p>@ <a href="https://www.hnust.edu.cn/">湖南科技大学</a>, by 肖红林</a>.</p>                    </div>                </div>            </div>        </div>    </div>    <!-- Bootstrap core JavaScript    ================================================== -->    <!-- Placed at the end of the document so the pages load faster -->    <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>    <script>        window.jQuery || document.write('<script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/jquery.min.js"><\/script>')    </script>    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/js/bootstrap.min.js"></script>    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js"></script></body></html>]]></content>
     
+    
+    <categories>
+      
+      <category>demos</category>
+      
+      <category>OS</category>
+      
+    </categories>
     
     
   </entry>
@@ -52,7 +76,9 @@
     
     <categories>
       
-      <category>机器学习</category>
+      <category>Machine Learning</category>
+      
+      <category>CNN</category>
       
     </categories>
     
@@ -61,9 +87,7 @@
       
       <tag>机器学习</tag>
       
-      <tag>卷积神经网络</tag>
-      
-      <tag>AI</tag>
+      <tag>CNN</tag>
       
     </tags>
     
@@ -82,6 +106,8 @@
     <categories>
       
       <category>技术拓展</category>
+      
+      <category>博客部署</category>
       
     </categories>
     
@@ -108,7 +134,9 @@
     
     <categories>
       
-      <category>刷题学习</category>
+      <category>刷题</category>
+      
+      <category>C++算法</category>
       
     </categories>
     
@@ -133,7 +161,9 @@
     
     <categories>
       
-      <category>思考与权衡</category>
+      <category>Thoughts</category>
+      
+      <category>Essays</category>
       
     </categories>
     
@@ -159,6 +189,8 @@
     <categories>
       
       <category>技术拓展</category>
+      
+      <category>Django</category>
       
     </categories>
     

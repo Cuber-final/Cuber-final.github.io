@@ -22,7 +22,7 @@ function parseDate(year, month, day) {
     for (var i = 1; i <= month; i++) {
         sum += months[i - 1]
     }
-    console.log(sum)
+    //console.log(sum)
     return sum
 }
 
@@ -46,7 +46,7 @@ function getVirtualData(year) {
         var year = Number(text.slice(0, 4))
         var month = Number(text.slice(5, 7))
         var day = Number(text.slice(8, 10))
-        console.log(year, month, day)
+        //console.log(year, month, day)
         if (year == thisYear) {
             var date = parseDate(year, month, day)
             dateMap[date - 1][1] += 1
@@ -54,3 +54,31 @@ function getVirtualData(year) {
     }
     return dateMap
 };
+
+/*----------博客数据分析页-----------*/
+function getParentCates() {
+    var pArray = []
+    //建立数组
+    var cates = document.getElementsByClassName("category")
+    for (var i = 0; i < cates.length; i++) {
+        // 获取父类名
+        var cateName = cates[i].getElementsByTagName("span")[0].innerText
+        // 获取父类文章数
+        var catCount = cates[i].getElementsByTagName("span")[1].innerText
+        var item = JSON.parse(JSON.stringify({ "name": cateName, "value": Number(catCount) }))
+        pArray.push(item)
+    }
+    return pArray
+}
+
+function getSubCates() {
+    var sArray = []
+    var subCates = document.getElementsByClassName("category-sub")
+    for (var j = 0; j < subCates.length; j++) {
+        var subCateName = subCates[j].getElementsByTagName("span")[0].innerText
+        var subCateCount = subCates[j].getElementsByTagName("span")[1].innerText
+        var item = JSON.parse(JSON.stringify({ "name": subCateName, "value": Number(subCateCount) }))
+        sArray.push(item)
+    }
+    return sArray
+}
