@@ -46,7 +46,7 @@
         
         .test {
             font-size: 28px;
-            background-color: rgb(24, 80, 184);
+            background-color: rgb(15, 87, 168);
             width: 100px;
             margin: 10px;
             color: white;
@@ -85,14 +85,17 @@
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="/bootstrap">非抢占式HRRN</a></li>
+                    <li><a href="/HRRN_P">抢占式HRRN</a></li>
                     <li><a href="/FCFS">先来先服务FCFS</a></li>
                     <li><a href="/SRT">最短剩余时间SRT</a></li>
-                    <li><a href="/SJF">短作业优先SJF</a></li>
+                    <li class="active"><a href="#" class="btn-primary">短作业优先SJF</a></li>
                     <li><a href="/Round_Robin">时间片轮转调度算法</a></li>
+
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li><a href="/compare">各进程调度算法性能比较</a></li>
                 </ul>
+
 
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -101,20 +104,33 @@
                     <button id="time_restart" type="button" class="btn btn-danger">重置</button>
                     <button id="pause" type="button" class="btn btn-warning" disabled="disabled">暂停</button>
                     <button id="random" type="button" class="btn btn-info">随机生成进程</button>
-                    <button id="inputt" type="button" class="btn btn-info">输入进程数据</button>
+                    <button id="inputt" type="button" class="btn btn-info btn-blue nav-external animated hiding" hidden="true">输入进程数据</button>
                     <button id="learn" type="button" class="btn btn-primary">了解算法流程</button>
+
+
                     <div id="time" class='test'>0</div>
                 </div>
+
+                <!-- <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">进程到达时间</label>
+                        <input class="form-control" id="exampleInputEmail3" placeholder="进程到达时间">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword3">进程服务时间</label>
+                        <input class="form-control" id="exampleInputPassword3" placeholder="进程服务时间">
+                    </div>
+                    <button type="submit" class="btn btn-default">插入</button>
+                </form> -->
+
                 <div class="table">
                     <table class="table table-bordered" id='chart'>
                         <thead>
                             <tr>
                                 <th>进程</th>
-                                <th>到达时间/s</th>
                                 <th>服务时间/s</th>
-                                <th>剩余运行时间/s</th>
-                                <th>等待时间/s</th>
-                                <th>响应比</th>
+                                <th>到达时间/s</th>
+                                <th>等待时间</th>
                                 <th>状态</th>
                                 <th>周转时间/s</th>
                                 <th>归一化周转时间</th>
@@ -126,16 +142,17 @@
                     </table>
                 </div>
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-lg-4">
-                        <div id="main_2" style="width: 480px;height:400px;"></div>
+                        <div id="main" style="width: 480px;height:400px;"></div>
                     </div>
                     <div class="col-lg-4">
-                        <div id="main_3" style="width: 700px;height:350px;margin-left: 20px;"></div>
+                        <div id="main_1" style="width: 700px;height:350px;margin-left: 20px;"></div>
                     </div>
 
-                </div>
+                </div> -->
                 <div id="infom"></div>
+
             </div>
         </div>
     </div>
@@ -143,49 +160,51 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js " integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ " crossorigin="anonymous "></script>
+    <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>
-        window.jQuery || document.write('<script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/jquery.min.js "><\/script>')
+        window.jQuery || document.write('<script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/jquery.min.js"><\/script>')
     </script>
-    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/js/bootstrap.min.js "></script>
+    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/dist/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/holder.min.js "></script>
+    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/vendor/holder.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js "></script>
+    <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <script src="/js/xhl/echarts_view_t.js "></script>
-    <script src="/js/xhl/echarts_process_t.js "></script>
-    <script src="/js/xhl/hrrn_t.js "></script>
+    <!-- <script src="js/echarts_view.js"></script>
+    <script src="js/echarts_process.js"></script> -->
+    <script src="/js/xhl/SJF.js"></script>
     <script>
         dele();
     </script>
 
-    <div class="modal fade " id="loginModalId" tabindex="-1 " role="dialog " aria-hidden="true ">
-        <div class="modal-dialog ">
-            <div class="modal-content ">
-                <div class="modal-header ">
-                    <button type="button " class="close " data-dismiss="modal " aria-hidden="true ">
+    <div class="modal fade" id="loginModalId" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             ×
                         </button>
-                    <h4 class="modal-title " id="myModalLabel">进程输入：</h4>
+                    <h4 class="modal-title" id="myModalLabel">进程输入：</h4>
                 </div>
-                <div class="modal-body ">
-                    <div class="form-group ">
-                        <label class="sr-only " for="exampleInputEmail3 ">进程到达时间</label>
-                        <input class="form-control " id="p_stime" placeholder="进程到达时间 ">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">进程到达时间</label>
+                        <input class="form-control" id="p_stime" placeholder="进程到达时间">
                     </div>
-                    <div class="form-group ">
-                        <label class="sr-only " for="exampleInputPassword3 ">进程服务时间</label>
-                        <input class="form-control " id="p_ntime" placeholder="进程服务时间 ">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword3">进程服务时间</label>
+                        <input class="form-control" id="p_ntime" placeholder="进程服务时间">
                     </div>
                 </div>
-                <div class="modal-footer ">
-                    <button type="button " class="btn btn-default " data-dismiss="modal">取消</button>
-                    <button type="button " class="btn btn-primary " id="loginModalYesId">添加</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="loginModalYesId">添加</button>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
+
 
 </html>

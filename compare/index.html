@@ -84,7 +84,7 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="active"><a href="#">非抢占式HRRN<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/bootstrap">非抢占式HRRN</a></li>
                     <li><a href="/HRRN_P">抢占式HRRN</a></li>
                     <li><a href="/FCFS">先来先服务FCFS</a></li>
                     <li><a href="/SRT">最短剩余时间SRT</a></li>
@@ -92,21 +92,15 @@
                     <li><a href="/Round_Robin">时间片轮转调度算法</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li><a href="/compare">各进程调度算法性能比较</a></li>
+                    <li class="active"><a href="#" class="btn-primary">各进程调度算法性能比较</a></li>
                 </ul>
 
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="row placeholders">
-                    <button id="btn_time" type="button" class="btn btn-primary" disabled="disabled">开始</button>
-                    <button id="time_restart" type="button" class="btn btn-danger">重置</button>
-                    <button id="pause" type="button" class="btn btn-warning" disabled="disabled">暂停</button>
-                    <button id="random" type="button" class="btn btn-info">随机生成进程</button>
-                    <button id="inputt" type="button" class="btn btn-info btn-blue nav-external animated hiding" hidden="true">输入进程数据</button>
-                    <button id="learn" type="button" class="btn btn-primary">了解算法流程</button>
-
-
-                    <div id="time" class='test'>0</div>
+                    <button id="btn_time_compare" type="button" class="btn btn-primary" disabled="disabled">开始</button>
+                    <button id="random_compare" type="button" class="btn btn-info">随机生成进程</button>
+                    <button id="inputt_compare" type="button" class="btn btn-info btn-blue nav-external animated hiding" hidden="true">输入进程数据</button>
                 </div>
 
                 <!-- <form class="form-inline">
@@ -122,19 +116,15 @@
                 </form> -->
 
                 <div class="table">
-                    <table class="table table-bordered" id='chart'>
+                    <table class="table table-bordered" id='chart_compare'>
                         <thead>
                             <tr>
                                 <th>进程</th>
                                 <th>服务时间/s</th>
                                 <th>到达时间/s</th>
-                                <th>响应比</th>
-                                <th>状态</th>
-                                <th>周转时间/s</th>
-                                <th>归一化周转时间</th>
                             </tr>
                         </thead>
-                        <tbody id="body">
+                        <tbody id="body_compare">
 
                         </tbody>
                     </table>
@@ -142,14 +132,66 @@
 
                 <div class="row">
                     <div class="col-lg-4">
-                        <div id="main" style="width: 480px;height:400px;"></div>
+                        <h2>FCFS先来先服务</h2>
+                        <p> 主要从“公平”的角度考虑（类似于我们生活中排队买东西的例子）,按照作业/进程到达的先后顺序进行服务,是非抢占的。</p>
+                        <p id="fcfst">完成时间：</p>
+                        <p id="fcfsz">平均周转时间：</p>
+                        <p id="fcfsdqz">平均带权周转时间：</p>
+
                     </div>
+                    <!-- /.col-lg-4 -->
                     <div class="col-lg-4">
-                        <div id="main_1" style="width: 700px;height:350px;margin-left: 20px;"></div>
+                        <h2>SRT最短剩余时间</h2>
+                        <p>最短的剩余运行时间的进程将优先得到服务，是抢占式的调度算法。</p>
+                        <p id="SRTt">完成时间：</p>
+                        <p id="SRTz">平均周转时间：</p>
+                        <p id="SRTdqz">平均带权周转时间：</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <h2>SJF短作业优先</h2>
+                        <p> 最短作业/进程优先得到服务（所谓“最短”，是指要求服务时间最短）,是非抢占的。</p>
+                        <p id="SJFt">完成时间：</p>
+                        <p id="SJFz">平均周转时间：</p>
+                        <p id="SJFdqz">平均带权周转时间：</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <h2>HRRN非抢占式</h2>
+                        <p>在每次调度时先计算各个作业或进程的响应比，高响应比的进程被优先服务，响应比 =（进程等待时间+要求服务的时间）/ 要求服务的时间。</p>
+                        <p id="HRRNt">完成时间：</p>
+                        <p id="HRRNz">平均周转时间：</p>
+                        <p id="HRRNdqz">平均带权周转时间：</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <h2>HRRN抢占式</h2>
+                        <p>在每次调度时先计算各个作业或进程的响应比，高响应比的进程被优先服务，响应比 =（进程等待时间+要求服务的时间）/ 要求服务的时间。</p>
+                        <p id="HRRNPt">完成时间：</p>
+                        <p id="HRRNPz">平均周转时间：</p>
+                        <p id="HRRNPdqz">平均带权周转时间：</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <h2>时间片轮转调度</h2>
+                        <p>按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片（如100ms）。若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队。</p>
+                        <p><button id="tsize_compare" class="btn btn-danger" type="button">输入时间片大小 &raquo;</button></p>
+                        <p id="RRt">完成时间：</p>
+                        <p id="RRz">平均周转时间：</p>
+                        <p id="RRdqz">平均带权周转时间：</p>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div id="main_compare" style="width: 1200px;height:600px;margin-top: 100px"></div>
                     </div>
 
+
                 </div>
-                <div id="infom"></div>
+                <div id="infom_compare"></div>
 
             </div>
         </div>
@@ -168,35 +210,56 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <script src="/js/xhl/echarts_view.js"></script>
-    <script src="/js/xhl/echarts_process.js"></script>
-    <script src="/js/xhl/test.js"></script>
-    <script>
+    <script src="/js/xhl/echarts_compare.js"></script>
+    <script src="/js/xhl/compare.js"></script>
+    <!-- <script>
         dele();
-    </script>
+    </script> -->
 
-    <div class="modal fade" id="loginModalId" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="loginModalId_compare" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                             ×
                         </button>
-                    <h4 class="modal-title" id="myModalLabel">进程输入：</h4>
+                    <h4 class="modal-title" id="myModalLabel_compare">进程输入：</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputEmail3">进程到达时间</label>
-                        <input class="form-control" id="p_stime" placeholder="进程到达时间">
+                        <input class="form-control" id="p_stime_compare" placeholder="进程到达时间">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" for="exampleInputPassword3">进程服务时间</label>
-                        <input class="form-control" id="p_ntime" placeholder="进程服务时间">
+                        <input class="form-control" id="p_ntime_compare" placeholder="进程服务时间">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="loginModalYesId">添加</button>
+                    <button type="button" class="btn btn-primary" id="loginModalYesId_compare">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModalId_compare_1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true ">
+                            ×
+                        </button>
+                    <h4 class="modal-title" id="myModalLabel_compare_1">输入时间片大小：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">时间片大小</label>
+                        <input class="form-control " id="p_stime_compare_1" placeholder="时间片大小">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="loginModalYesId_compare_1">确定</button>
                 </div>
             </div>
         </div>

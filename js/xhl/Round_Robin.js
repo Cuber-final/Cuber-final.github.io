@@ -3,11 +3,9 @@ var parr = {
     key_ntime: Array(),
     key_stime: Array(),
     key_rtime: Array(),
-    key_rio: Array(),
     key_statue: Array(), //0表示等待状态，1表示正在运行,2表示已完成
     key_ztime: Array(),
     key_dqztime: Array(),
-    key_waittime: Array()
 }
 
 var aa = [];
@@ -25,29 +23,25 @@ function creatProgress() {
     parr.key_stime.length = size;
     parr.key_n.length = size;
     parr.key_statue.length = size;
-    parr.key_rio.length = size;
     parr.key_ztime.length = size;
     parr.key_dqztime.length = size;
     parr.key_rtime.length = size;
-    parr.key_waittime.length = size;
     for (var i = 0; i < size; i++) {
         aa[i] = 0;
         bb[i] = 0;
         parr.key_n[i] = i;
         parr.key_ntime[i] = Math.floor(Math.random() * (+10 - +1)) + +1;
         parr.key_stime[i] = Math.floor(Math.random() * (+10 - +0)) + +0;
-        parr.key_rio[i] = 0;
         parr.key_statue[i] = 0;
         parr.key_ztime[i] = 0;
         parr.key_dqztime[i] = 0;
         parr.key_rtime[i] = parr.key_ntime[i];
-        parr.key_waittime[i] = 0;
     }
     var tbody = document.querySelector('tbody');
     for (var i = 0; i < size; i++) {
         var tr = document.createElement('tr');
         tbody.appendChild(tr);
-        for (var j = 0; j < 9; j++) {
+        for (var j = 0; j < 7; j++) {
             var td = document.createElement('td');
             if (j == 0)
                 td.innerHTML = 'P' + parr.key_n[i];
@@ -55,95 +49,133 @@ function creatProgress() {
                 td.innerHTML = parr.key_ntime[i];
             else if (j == 1)
                 td.innerHTML = parr.key_stime[i];
-            else if (j == 5) td.innerHTML = parr.key_rio[i];
-            else if (j == 6) {
+            else if (j == 4) {
                 if (parr.key_statue[i] == 0)
                     td.innerHTML = '等待中';
                 else if (parr.key_statue[i] == 1)
                     td.innerHTML = '运行中';
                 else td.innerHTML = '已完成';
-            } else if (j == 7) td.innerHTML = parr.key_ztime[i];
-            else if (j == 8) td.innerHTML = parr.key_dqztime[i];
+            } else if (j == 5) td.innerHTML = parr.key_ztime[i];
+            else if (j == 6) td.innerHTML = parr.key_dqztime[i];
             else if (j == 3) { //还需时间
                 td.innerHTML = parr.key_rtime[i];
-            } else if (j == 4) { //等待时间
-                td.innerHTML = parr.key_waittime[i];
             }
             tr.appendChild(td);
         }
     }
 }
 
+var time_piece = 0;
+
+function time_size(stt) {
+    time_piece = stt;
+    var ti = document.getElementById('view_tsize');
+    ti.innerHTML = '时间片：' + stt;
+}
+
+
+var queue = function() {
+    this.items = [];
+    this.enqueue = function(item) {
+        this.items.push(item);
+    }
+    this.dequeue = function() {
+        if (this.items.length == 0)
+            return null;
+        return this.items.shift();
+    }
+    this.clear = function() {
+        this.items = [];
+    }
+    this.count = function() {
+        return this.items.length;
+    }
+    this.front = function() {
+        if (this.items.length > 0)
+            return this.items[0];
+        else return null;
+    }
+}
 
 var numb, fin_time;
 var run_time = [];
+var p_queue = new queue();
+var run = false;
 
 function start(wh, key) {
     var second = wh;
     if (second == 0 && key == 0) {
-        //creatProgress();
-        updata(second);
-        //updata(second);
-        numb = celect(0);
-        //fin_time = -1;
-        if (numb >= 0) {
-            progress_start(numb, 0);
-            run_time[numb] = second;
+        celect(second);
+        updata();
+        if (p_queue.count() > 0) {
+            progress_start(p_queue.front(), second);
+            numb = p_queue.front();
+            p_queue.dequeue();
         }
-        updata(second);
-
+        updata();
     }
-
-
 
     function timer() {
         second++;
-        //更新响应比
-        updata(second);
-        var nn = celect(second);
-        if (numb >= 0) {
-            if (parr.key_rtime[numb] == 0) {
-                progress_finish(numb, second);
-                numb = nn;
-                progress_start(numb);
-                run_time[numb] = second;
-            } else if (parr.key_rio[nn] > parr.key_rio[numb]) {
-                progress_stop(numb, second);
-                //console.log(nn + ' ' + numb);
-                numb = nn;
-                progress_start(numb);
-                run_time[numb] = second;
-                //console.log(numb + ' ' + parr.key_statue[numb]);
-
+        celect(second);
+        updata();
+        if (run == true) {
+            cD--;
+            console.log(cD);
+            if (parr.key_rtime[numb] != 0) {
+                if (cD == 0) {
+                    progress_stop(numb, time_piece);
+                    p_queue.enqueue(numb);
+                    //下一进程进CPU运行
+                    progress_start(p_queue.front(), second);
+                    numb = p_queue.front();
+                    p_queue.dequeue();
+                }
+            } else if (parr.key_rtime[numb] == 0) {
+                progress_finish(numb, second, time_piece - cD);
+                if (p_queue.count() > 0) {
+                    progress_start(p_queue.front(), second);
+                    numb = p_queue.front();
+                    p_queue.dequeue();
+                }
             }
-
         } else {
-            numb = nn;
-            progress_start(numb);
-            run_time[numb] = second;
-        }
-        updata(second);
-        /* if (second >= fin_time) {
-            if (second == fin_time)
-                progress_finish(numb, second);
-            var numbe = celect(second);
-            numb = numbe;
-            if (numbe != -1) {
-                fin_time = progress_start(numbe, second);
+            if (p_queue.count() > 0) {
+                progress_start(p_queue.front(), second);
+                numb = p_queue.front();
+                p_queue.dequeue();
             }
-        } */
-
+        }
+        updata();
         var time = document.getElementById('time');
         time.innerHTML = second;
     }
-    int = setInterval(timer, 2000);
+    int = setInterval(timer, 1500);
 }
 
 
+function celect(second) {
+    for (var i = 0; i < parr.key_n.length; i++) {
+        //如果此时进程进入等待状态则进队列
+        if (parr.key_stime[i] == second) {
+            p_queue.enqueue(i);
+            console.log('进程' + i + '进队');
+        }
+    }
+}
+var cD = 0; //时间片倒计时
 
-
-function progress_start(num) { //某个进程开始运行
+function progress_start(num, start_time) { //某个进程开始运行
+    run = true;
     parr.key_statue[num] = 1;
+    cD = time_piece;
+
+    console.log('start任务：' + num + ' 开始时间：' + start_time);
+    var p = document.getElementById('infom');
+    var em = document.createElement("li");
+    em.innerHTML = 'start: P' + num + ' ** 开始时间：' + start_time;
+    if (num >= 0)
+        p.insertBefore(em, p.nextElementSibling);
     //run_time[num]++;
     //var ik = start_time + parr.key_ntime[num];
     //console.log('start任务：' + num + ' 开始时间：' + start_time + ' 结束时间：' + ik);
@@ -152,17 +184,16 @@ function progress_start(num) { //某个进程开始运行
     //em.innerHTML = 'start : P' + num + ' *** 开始时间：' + start_time + 's *** 结束时间：' + ik + 's';
     //p.insertBefore(em, p.nextElementSibling);
     // return ik;
-
-
 }
 
 function progress_stop(num, second) {
+    run = false;
     parr.key_statue[num] = 0;
     var h = document.getElementById('body');
     //var child = h.childNodes;
     var tr = h.querySelectorAll('tr');
     var td = tr[num].querySelectorAll('td');
-    td[6].innerHTML = '等待中';
+    td[4].innerHTML = '等待中';
     tr[num].className = 'nono';
 
     option_3.series.push({
@@ -175,13 +206,14 @@ function progress_stop(num, second) {
         emphasis: {
             focus: 'series'
         },
-        data: [second - run_time[num]]
+        data: [second]
     })
     option_3 && myChart_3.setOption(option_3);
 
 }
 
-function progress_finish(num, second) { //进程结束改变statue
+function progress_finish(num, second, echart) { //进程结束改变statue
+    run = false;
     parr.key_statue[num] = 2;
     //计算周转时间
     parr.key_ztime[num] = second - parr.key_stime[num];
@@ -190,8 +222,8 @@ function progress_finish(num, second) { //进程结束改变statue
     //var child = h.childNodes;
     var tr = h.querySelectorAll('tr');
     var td = tr[num].querySelectorAll('td');
-    td[7].innerHTML = parr.key_ztime[num];
-    td[8].innerHTML = parr.key_dqztime[num];
+    td[5].innerHTML = parr.key_ztime[num];
+    td[6].innerHTML = parr.key_dqztime[num];
     //某个进程结束时加入echarts_process条形图中并显示出来
 
 
@@ -205,27 +237,22 @@ function progress_finish(num, second) { //进程结束改变statue
         emphasis: {
             focus: 'series'
         },
-        data: [second - run_time[num]]
+        data: [echart]
     })
     option_3 && myChart_3.setOption(option_3);
 }
 
 
-//一个进程结束时挑选响应比最高的进程为其分配CPU,返回进程的序号
-function celect(second) {
+
+
+
+function dele() {
+    //清除table中的数据
     var h = document.getElementById('body');
     var child = h.childNodes;
-    var minn = 0,
-        num = -1;
-    for (var i = child.length - 1; i >= 0; i--) {
-        if (parr.key_rio[i] > minn && parr.key_statue[i] == 0 && parr.key_stime[i] <= second) {
-            num = i;
-            minn = parr.key_rio[i];
-        }
-    }
-    return num;
+    for (var i = child.length - 1; i >= 0; i--)
+        h.removeChild(child[i]); //删除节点
 }
-
 
 
 //动态更新表格数据，进程信息
@@ -236,32 +263,18 @@ function updata(second) {
     var finish_num = 0;
     finish_num -= child.length;
     for (var i = child.length - 1; i >= 0; i--) {
-        //等待时间++
-        if (!bb[i]) {
-            if (second > parr.key_stime[i] && parr.key_statue[i] == 0)
-                parr.key_waittime[i]++;
-            bb[i] = 1;
-        } else bb[i] = 0;
-
-        if (parr.key_stime[i] <= second && parr.key_statue[i] == 0) {
-            parr.key_rio[i] = (parr.key_ntime[i] + parr.key_waittime[i]) / parr.key_ntime[i];
-            var td = tr[i].querySelectorAll('td');
-            parr.key_rio[i] = parr.key_rio[i].toFixed(2); //保留两位小数
-            td[5].innerHTML = parr.key_rio[i];
-            td[4].innerHTML = parr.key_waittime[i];
-        } else if (parr.key_statue[i] > 0) {
+        if (parr.key_statue[i] > 0) {
             var td = tr[i].querySelectorAll('td');
             if (parr.key_statue[i] == 1) {
-                td[6].innerHTML = '运行中';
+                td[4].innerHTML = '运行中';
                 tr[i].className = 'slid';
                 if (!aa[i]) {
                     parr.key_rtime[i]--;
                     td[3].innerHTML = parr.key_rtime[i];
                     aa[i] = 1;
                 } else aa[i] = 0;
-
             } else if (parr.key_statue[i] == 2) {
-                td[6].innerHTML = '已完成';
+                td[4].innerHTML = '已完成';
                 tr[i].className = 'over';
                 finish_num++;
                 if (finish_num == 0) {
@@ -272,7 +285,6 @@ function updata(second) {
         }
 
     }
-    change_bar(parr.key_rio); //每次更新数据时同时更新echarts_view条形图中的数据
 }
 
 
@@ -287,15 +299,103 @@ btn_start.onclick = function() { //开始启动计时
     // for (var i = child.length - 1; i >= 0; i--)
     //     h.removeChild(child[i]); //删除节点
     start(0, 0);
+    star = 1;
 }
 
 //随机生成进程事件
 var btn_random = document.getElementById('random');
 btn_random.onclick = function() { //开始启动计时
+
+    //开始前先清除表格中的所有条数据
+    var h = document.getElementById('body');
+    var child = h.childNodes;
+    for (var i = child.length - 1; i >= 0; i--)
+        h.removeChild(child[i]); //删除节点
     document.getElementById("random").setAttribute("disabled", true); //设置不可点击
     document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
     creatProgress();
 }
+
+function insert(st, nt) {
+    var lon = parr.key_n.length;
+    parr.key_ntime.length++;
+    parr.key_stime.length++;
+    parr.key_n.length++;
+    parr.key_statue.length++;
+    parr.key_ztime.length++;
+    parr.key_dqztime.length++;
+    aa.length++;
+    bb.length++;
+    parr.key_rtime.length++;
+
+    parr.key_ntime[lon] = nt;
+    parr.key_stime[lon] = st;
+    parr.key_n[lon] = lon;
+    parr.key_statue[lon] = 0;
+    parr.key_ztime[lon] = 0;
+    parr.key_dqztime[lon] = 0;
+    parr.key_rtime[lon] = parr.key_ntime[lon];
+    aa[lon] = 0;
+    bb[lon] = 0;
+
+    var tbody = document.querySelector('tbody');
+
+    var tr = document.createElement('tr');
+    tbody.appendChild(tr);
+    for (var j = 0; j < 7; j++) {
+        var td = document.createElement('td');
+        if (j == 0)
+            td.innerHTML = 'P' + parr.key_n[lon];
+        else if (j == 2)
+            td.innerHTML = parr.key_ntime[lon];
+        else if (j == 1)
+            td.innerHTML = parr.key_stime[lon];
+        else if (j == 4) {
+            if (parr.key_statue[lon] == 0)
+                td.innerHTML = '等待中';
+            else if (parr.key_statue[lon] == 1)
+                td.innerHTML = '运行中';
+            else td.innerHTML = '已完成';
+        } else if (j == 5) td.innerHTML = parr.key_ztime[lon];
+        else if (j == 6) td.innerHTML = parr.key_dqztime[lon];
+        else if (j == 3) { //还需时间
+            td.innerHTML = parr.key_rtime[lon];
+        }
+        tr.appendChild(td);
+    }
+}
+
+$(document).ready(function() {
+    document.getElementById("tsize").onclick = function() {
+        $('#loginModalId_1').modal('show');
+    }
+    document.getElementById("loginModalYesId_1").onclick = function() {
+        $('#loginModalId_1').modal('hide');
+        //alert("登录功能未实现！");
+        var stt = document.getElementById("p_stime_1").value;
+        st = parseInt(stt);
+        time_size(stt);
+        document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    }
+});
+
+
+$(document).ready(function() {
+    document.getElementById("inputt").onclick = function() {
+        $('#loginModalId').modal('show');
+    }
+    document.getElementById("loginModalYesId").onclick = function() {
+        $('#loginModalId').modal('hide');
+        //alert("登录功能未实现！");
+
+        var st = document.getElementById("p_stime").value;
+        var nt = document.getElementById("p_ntime").value;
+        st = parseInt(st);
+        nt = parseInt(nt);
+        insert(st, nt);
+        document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
+    }
+});
 
 //暂停继续按钮事件
 var a = false; //区分是暂停还是继续
@@ -313,32 +413,25 @@ btn_stop.onclick = function() {
     }
 }
 
-//通过更改option中的data数组内的数据来实时更新条形图响应比的数据
-function change_bar(a) {
-    option_2.series[0].data.length = a.length;
-    option_2.xAxis.data.length = a.length;
-    for (var i = 0; i < a.length; i++) {
-        option_2.series[0].data[i] = a[i];
-        option_2.xAxis.data[i] = 'P' + i;
-    }
-    option_2 && myChart_2.setOption(option_2, true);
-}
 
 
+var star = 0;
 //重置开始，重新开始，重置按钮响应事件
 var btn_re = document.getElementById('time_restart');
 btn_re.onclick = function() {
-
+    //重置时间片大小
+    time_piece = 0;
+    var ti = document.getElementById('view_tsize');
+    ti.innerHTML = '时间片：' + time_piece;
     run_time.length = 0;
     //document.getElementById("btn_time").removeAttribute("disabled"); //去掉不可点击
     document.getElementById("random").removeAttribute("disabled"); //去掉不可点击
     document.getElementById("btn_time").setAttribute("disabled", true); //设置不可点击
     document.getElementById("pause").setAttribute("disabled", true);
     //停止 setInterval() 方法
-    clearInterval(int);
-    //重置条形图echarts_view
-    var a = [];
-    change_bar(a);
+    if (star)
+        clearInterval(int);
+
     //清除条形图echarts_process的数据
     var b = option_3.series.length;
     for (var k = 0; k < b; k++)
@@ -357,4 +450,26 @@ btn_re.onclick = function() {
     var child = h.childNodes;
     for (var i = child.length - 1; i >= 0; i--)
         h.removeChild(child[i]); //删除节点
+
+    parr.key_ntime.length = 0;
+    parr.key_stime.length = 0;
+    parr.key_n.length = 0;
+    parr.key_statue.length = 0;
+    parr.key_ztime.length = 0;
+    parr.key_dqztime.length = 0;
+    parr.key_rtime.length = 0;
+    aa.length = 0;
+    bb.length = 0;
+
+    //清除进程开始信息的列表数据
+    var kk = document.getElementById('infom');
+    var lii = kk.querySelectorAll('li');
+    for (var j = 0; j < lii.length; j++)
+        document.getElementById('infom').removeChild(lii[j]);
+}
+
+//学习算法
+var btn_learn = document.getElementById('learn');
+btn_learn.onclick = function() { //开始启动计时
+    alert("按照各进程到达就绪队列的顺序，轮流让各个进程执行一个时间片（如100ms）。若进程未在一个时间片内执行完，则剥夺处理机，将进程重新放到就绪队列队尾重新排队。");
 }

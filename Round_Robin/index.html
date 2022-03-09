@@ -52,6 +52,15 @@
             color: white;
             text-align: center;
         }
+        
+        .test_1 {
+            font-size: 28px;
+            background-color: rgb(24, 80, 184);
+            width: 180px;
+            margin: 10px;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -85,10 +94,11 @@
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
                     <li><a href="/bootstrap">非抢占式HRRN</a></li>
+                    <li><a href="/HRRN_P">抢占式HRRN</a></li>
                     <li><a href="/FCFS">先来先服务FCFS</a></li>
                     <li><a href="/SRT">最短剩余时间SRT</a></li>
                     <li><a href="/SJF">短作业优先SJF</a></li>
-                    <li><a href="/Round_Robin">时间片轮转调度算法</a></li>
+                    <li class="active"><a href="#" class="btn-primary">时间片轮转调度算法</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li><a href="/compare">各进程调度算法性能比较</a></li>
@@ -103,7 +113,9 @@
                     <button id="random" type="button" class="btn btn-info">随机生成进程</button>
                     <button id="inputt" type="button" class="btn btn-info">输入进程数据</button>
                     <button id="learn" type="button" class="btn btn-primary">了解算法流程</button>
+                    <button id="tsize" type="button" class="btn btn-danger">输入时间片大小 &raquo;</button>
                     <div id="time" class='test'>0</div>
+                    <div id="view_tsize" class="test_1">时间片：</div>
                 </div>
                 <div class="table">
                     <table class="table table-bordered" id='chart'>
@@ -113,8 +125,6 @@
                                 <th>到达时间/s</th>
                                 <th>服务时间/s</th>
                                 <th>剩余运行时间/s</th>
-                                <th>等待时间/s</th>
-                                <th>响应比</th>
                                 <th>状态</th>
                                 <th>周转时间/s</th>
                                 <th>归一化周转时间</th>
@@ -127,9 +137,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div id="main_2" style="width: 480px;height:400px;"></div>
-                    </div>
+
                     <div class="col-lg-4">
                         <div id="main_3" style="width: 700px;height:350px;margin-left: 20px;"></div>
                     </div>
@@ -153,9 +161,9 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://fastly.jsdelivr.net/npm/@bootcss/v3.bootcss.com@1.0.30/assets/js/ie10-viewport-bug-workaround.js "></script>
 
-    <script src="/js/xhl/echarts_view_t.js "></script>
-    <script src="/js/xhl/echarts_process_t.js "></script>
-    <script src="/js/xhl/hrrn_t.js "></script>
+
+    <script src="/js/xhl/echarts_process_t.js"></script>
+    <script src="/js/xhl/Round_Robin.js"></script>
     <script>
         dele();
     </script>
@@ -182,6 +190,28 @@
                 <div class="modal-footer ">
                     <button type="button " class="btn btn-default " data-dismiss="modal">取消</button>
                     <button type="button " class="btn btn-primary " id="loginModalYesId">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModalId_1" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true ">
+                            ×
+                        </button>
+                    <h4 class="modal-title" id="myModalLabel_1">输入时间片大小：</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">时间片大小</label>
+                        <input class="form-control " id="p_stime_1" placeholder="时间片大小">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="loginModalYesId_1">确定</button>
                 </div>
             </div>
         </div>
