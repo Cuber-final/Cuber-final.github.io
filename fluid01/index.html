@@ -1,0 +1,636 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/laker.svg">
+  <link rel="icon" href="/img/laker.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="google-site-verification" content="2lie0HSYu0BL3K9XgWOSvZIHL2IMueE6Xxix8D6E7TU" />
+  <meta name="baidu-site-verification" content="code-LwoxekwucD" />
+  
+  <meta name="theme-color" content="#264653">
+  <meta name="author" content="峰攀">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="增加部分自己设计的板块功能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fluid主题的个性化拓展">
+<meta property="og:url" content="https://cuber-final.github.io/fluid01/">
+<meta property="og:site_name" content="峰攀">
+<meta property="og:description" content="增加部分自己设计的板块功能">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-20T08:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-21T02:40:40.875Z">
+<meta property="article:author" content="峰攀">
+<meta property="article:tag" content="Web-Dev">
+<meta property="article:tag" content="创新优化">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Fluid主题的个性化拓展 - 峰攀</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/monokai-sublime.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myStyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"cuber-final.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"KP6pnts6yruKOQpghfXRkz05-gzGzoHsz","app_key":"D7Tv6MORJ5VHKN6PDYoYNLDF","server_url":"https://kp6pnts6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>峰攀</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/analyzer/">
+                <i class="iconfont icon-code"></i>
+                站内统计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/timelines/">
+                <i class="iconfont icon-comment"></i>
+                随笔
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/matrix.31qsai9476e0.webp') no-repeat center center;background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Fluid主题的个性化拓展">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-20 16:00" pubdate>
+        2022年4月20日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      405 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Fluid主题的个性化拓展</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：4 分钟前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="目前博客个性化进度"><a href="#目前博客个性化进度" class="headerlink" title="目前博客个性化进度"></a>目前博客个性化进度</h2><ol>
+<li>完成了配色修改，了解了一下配置项写法和CSS的修改方式</li>
+<li>标签云并没有达到理想的状态，但也足矣</li>
+</ol>
+<h3 id="目标功能玩法"><a href="#目标功能玩法" class="headerlink" title="目标功能玩法"></a>目标功能玩法</h3><h4 id="添加网站运行时间"><a href="#添加网站运行时间" class="headerlink" title="添加网站运行时间"></a>添加网站运行时间</h4><ul>
+<li>已完成，按照相关教程即可</li>
+</ul>
+<h4 id="归档页面—-TimeLine"><a href="#归档页面—-TimeLine" class="headerlink" title="归档页面—-TimeLine"></a>归档页面—-TimeLine</h4><h4 id="echart实现数据统计可视化"><a href="#echart实现数据统计可视化" class="headerlink" title="echart实现数据统计可视化"></a>echart实现数据统计可视化</h4><h4 id="在线实验项目"><a href="#在线实验项目" class="headerlink" title="在线实验项目"></a>在线实验项目</h4><ul>
+<li>机器学习<ul>
+<li>模型部署到云端</li>
+<li>制作API调用</li>
+<li>通过实验室的某一功能指定实现，以下方式可行？<ul>
+<li>上传文件</li>
+<li>表单输入，传递参数，点击发送</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="修改Markdown样式，优化视觉效果"><a href="#修改Markdown样式，优化视觉效果" class="headerlink" title="修改Markdown样式，优化视觉效果"></a>修改Markdown样式，优化视觉效果</h4><ul>
+<li>根据配置模拟为Typora的主题Mo dark</li>
+<li>公式使用问题</li>
+</ul>
+<script type="math/tex; mode=display">
+t即为输出，b为偏置单元，w_i为权重，x_i为输入单元\\
+t=f(\sum_{i=1}^nw_ix_i+b)=f(\mathbf{w}^T\mathbf{x})\\
+\sum_{i=1}^nw_ix_i+b 正是'分界线'\\
+其数值大小无非以下，直接带入激活函数便能得到判断结果\\
+\sum_{i=1}^nw_ix_i+b
+\begin{cases}
+\geq 0 \\[2ex]
+<0
+\end{cases}
+\\
+\mathbf{w}^T\mathbf{x} ，是上一公式的简化写法，在计算机中使用向量的计算（矩阵点积）</script><ul>
+<li><p>测试Latex语法的支持效果，以及检测BUG，hexo的LaTeX效果不如Typora，<strong>多行公式</strong>需要用 <code>\begin&#123;aligned&#125; ... \end&#123;aligned&#125;</code>，换行符 <code>\\</code> 和定位符 <code>&amp;</code>。添加了这些代码内容后，渲染正常如下</p>
+</li>
+<li><p>代码块折叠实现</p>
+<ul>
+<li><p>打开文章默认代码折叠</p>
+</li>
+<li><p>通过折叠代码按钮可以实现代码的折叠与打开</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>实现步骤：</p>
+<ol>
+<li>找到copy-btn所在位置，看能否通过js添加折叠代码块按钮</li>
+<li>写脚本</li>
+</ol>
+<h3 id="使用Echarts制图"><a href="#使用Echarts制图" class="headerlink" title="使用Echarts制图"></a>使用Echarts制图</h3><ul>
+<li>[x] 完成</li>
+</ul>
+<h5 id="制作仿造GitHub的日历图"><a href="#制作仿造GitHub的日历图" class="headerlink" title="制作仿造GitHub的日历图"></a>制作仿造GitHub的日历图</h5><p>1️⃣制图</p>
+<ul>
+<li>先使用hexo-tag-echarts 插件写入md文件中制作简单的图表（制图）</li>
+</ul>
+<p>2️⃣绑定数据</p>
+<ol>
+<li>先将数据获取并渲染到<code>about</code>页面中</li>
+</ol>
+<ul>
+<li>通过<code>ejs</code>注入的方式，插入到<code>about</code>的<code>html样式</code>中，通过<code>site.posts</code>变量获取所有文章的信息</li>
+</ul>
+<ol>
+<li>在.md中直接插入<code>JavaScript</code>脚本，通过获取页面指定DOM元素形成数据集合，然后自定义<code>function</code>方法对图标的数据进行初始化和更新</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//echart_make.js</span><br><span class="hljs-comment">/*</span><br><span class="hljs-comment">var dom = document.getElementById(&quot;container&quot;)</span><br><span class="hljs-comment">var myChart = echarts.init(dom)</span><br><span class="hljs-comment">var app = &#123;&#125;</span><br><span class="hljs-comment">*/</span><br><span class="hljs-comment">//获取今年年份</span><br><span class="hljs-keyword">var</span> thisYear = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().getFullYear()<br><span class="hljs-keyword">var</span> option<br><br><span class="hljs-comment">//计算是今年的第几天</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parseDate</span>(<span class="hljs-params">year, month, day</span>) </span>&#123;<br>    <span class="hljs-keyword">var</span> feb = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> (year % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; year % <span class="hljs-number">100</span> != <span class="hljs-number">0</span> || year % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) &#123;<br>        feb = <span class="hljs-number">29</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        feb = <span class="hljs-number">28</span><br>    &#125;<br>    <span class="hljs-keyword">var</span> sum = day<br>    <span class="hljs-keyword">var</span> months = [<span class="hljs-number">0</span>, <span class="hljs-number">31</span>, feb, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>]<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= month; i++) &#123;<br>        sum += months[i - <span class="hljs-number">1</span>]<br>    &#125;<br>    <span class="hljs-built_in">console</span>.log(sum)<br>    <span class="hljs-keyword">return</span> sum<br>&#125;<br><br><span class="hljs-comment">//解决如何填入年份作为数据以及该日提交文章数</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVirtualData</span>(<span class="hljs-params">year</span>) </span>&#123;<br>    year = year;<br>    <span class="hljs-keyword">var</span> date = +echarts.number.parseDate(year + <span class="hljs-string">&#x27;-01-01&#x27;</span>);<br>    <span class="hljs-keyword">var</span> end = +echarts.number.parseDate(+year + <span class="hljs-number">1</span> + <span class="hljs-string">&#x27;-01-01&#x27;</span>);<br>    <span class="hljs-keyword">var</span> dayTime = <span class="hljs-number">3600</span> * <span class="hljs-number">24</span> * <span class="hljs-number">1000</span>;<br>    <span class="hljs-keyword">var</span> dateMap = [];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> time = date; time &lt; end; time += dayTime) &#123;<br>        dateMap.push([<br>            echarts.format.formatTime(<span class="hljs-string">&#x27;yyyy-MM-dd&#x27;</span>, time),<br>            <span class="hljs-number">0</span><br>        ]);<br>    &#125;<br>    <span class="hljs-comment">//对日历图进行更新</span><br>    <span class="hljs-keyword">var</span> dates = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">&quot;date-map&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; dates.length; i++) &#123; <span class="hljs-comment">//循环获取每个input表单元素值</span><br>        <span class="hljs-keyword">var</span> text = dates[i].innerText <span class="hljs-comment">//通过innerText或者innerHTML获取元素的文本值</span><br>        <span class="hljs-keyword">var</span> year = <span class="hljs-built_in">Number</span>(text.slice(<span class="hljs-number">0</span>, <span class="hljs-number">4</span>))<br>        <span class="hljs-keyword">var</span> month = <span class="hljs-built_in">Number</span>(text.slice(<span class="hljs-number">5</span>, <span class="hljs-number">7</span>))<br>        <span class="hljs-keyword">var</span> day = <span class="hljs-built_in">Number</span>(text.slice(<span class="hljs-number">8</span>, <span class="hljs-number">10</span>))<br>        <span class="hljs-built_in">console</span>.log(year, month, day)<br>        <span class="hljs-keyword">if</span> (year == thisYear) &#123;<br>            <span class="hljs-keyword">var</span> date = parseDate(year, month, day)<br>            dateMap[date - <span class="hljs-number">1</span>][<span class="hljs-number">1</span>] += <span class="hljs-number">1</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> dateMap<br>&#125;;<br><br><br><span class="hljs-comment">//------------about/index.md----------</span><br><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/js/echart_make.js&quot;</span> &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><br>&#123;% echarts <span class="hljs-number">300</span> <span class="hljs-string">&#x27;85%&#x27;</span> %&#125;<br>option = &#123;<br>        <span class="hljs-attr">title</span>: &#123;<br>            <span class="hljs-attr">top</span>: <span class="hljs-number">20</span>,<br>            <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>            <span class="hljs-attr">text</span>: <span class="hljs-string">&#x27;Publish&#x27;</span><br>        &#125;,<br>        <span class="hljs-attr">tooltip</span>: &#123;&#125;,<br>        <span class="hljs-attr">visualMap</span>: &#123;<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;piecewise&#x27;</span>,<br>            <span class="hljs-attr">orient</span>: <span class="hljs-string">&#x27;horizontal&#x27;</span>,<br>            <span class="hljs-attr">pieces</span>: [<br>                &#123; <span class="hljs-attr">gte</span>: <span class="hljs-number">31</span> &#125;,<br>                &#123; <span class="hljs-attr">gte</span>: <span class="hljs-number">21</span>, <span class="hljs-attr">lt</span>: <span class="hljs-number">31</span> &#125;,<br>                &#123; <span class="hljs-attr">gte</span>: <span class="hljs-number">11</span>, <span class="hljs-attr">lt</span>: <span class="hljs-number">21</span> &#125;,<br>                &#123; <span class="hljs-attr">gte</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">lt</span>: <span class="hljs-number">11</span> &#125;,<br>                &#123; <span class="hljs-attr">value</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#fff&#x27;</span> &#125;<br>            ],<br>            <span class="hljs-attr">showLabel</span>: <span class="hljs-literal">false</span>,<br>            <span class="hljs-attr">left</span>: <span class="hljs-string">&#x27;center&#x27;</span>,<br>            <span class="hljs-attr">top</span>: <span class="hljs-number">65</span>,<br>            <span class="hljs-attr">inRange</span>: &#123;<br>                <span class="hljs-attr">color</span>: [<span class="hljs-string">&#x27;rgb(220,233,200)&#x27;</span>, <span class="hljs-string">&#x27;rgb(123,201,111)&#x27;</span>, <span class="hljs-string">&#x27;rgb(25,98,35)&#x27;</span>]<br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">calendar</span>: &#123;<br>            <span class="hljs-comment">//获取今年年份</span><br>            <span class="hljs-attr">range</span>: thisYear,<br>            <span class="hljs-attr">top</span>: <span class="hljs-number">120</span>,<br>            <span class="hljs-attr">left</span>: <span class="hljs-number">30</span>,<br>            <span class="hljs-attr">right</span>: <span class="hljs-number">30</span>,<br>            <span class="hljs-attr">cellSize</span>: [<span class="hljs-string">&#x27;auto&#x27;</span>, <span class="hljs-number">15</span>], <span class="hljs-comment">//width:auto,height:15</span><br>            <span class="hljs-attr">itemStyle</span>: &#123;<br>                <span class="hljs-attr">borderWidth</span>: <span class="hljs-number">2</span>,<br>                <span class="hljs-attr">borderColor</span>: <span class="hljs-string">&#x27;#d0d0d0&#x27;</span>,<br>                <span class="hljs-attr">borderType</span>: <span class="hljs-string">&#x27;solid&#x27;</span>,<br>                <span class="hljs-attr">shadowColor</span>: <span class="hljs-string">&#x27;rgba(0, 0, 0, 0.5)&#x27;</span>,<br>                <span class="hljs-attr">shadowBlur</span>: <span class="hljs-number">1</span><br>            &#125;,<br><br>            <span class="hljs-attr">yearLabel</span>: &#123;<br>                <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">margin</span>: <span class="hljs-number">11</span>,<br>                <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;bottom&#x27;</span><br>            &#125;,<br>            <span class="hljs-attr">splitLine</span>: &#123;<br>                <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-comment">//分割线样式</span><br>                <span class="hljs-attr">lineStyle</span>: &#123;<br>                    <span class="hljs-attr">width</span>: <span class="hljs-number">3</span>,<br>                    <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#264653&#x27;</span><br>                &#125;<br>            &#125;,<br>            <span class="hljs-comment">//使用自定义纵坐标标签</span><br>            <span class="hljs-attr">dayLabel</span>: &#123;<br>                <span class="hljs-attr">position</span>: <span class="hljs-string">&#x27;start&#x27;</span>,<br>                <span class="hljs-attr">margin</span>: <span class="hljs-number">8</span>,<br>                <span class="hljs-attr">firstDay</span>: <span class="hljs-number">1</span>,<br>                <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-comment">//nameMap: &#x27;ZH&#x27;,</span><br>                <span class="hljs-attr">nameMap</span>: [<span class="hljs-string">&#x27;Sun&#x27;</span>, <span class="hljs-string">&#x27;Mon&#x27;</span>, <span class="hljs-string">&#x27;Tue&#x27;</span>, <span class="hljs-string">&#x27;Wed&#x27;</span>, <span class="hljs-string">&#x27;Thur&#x27;</span>, <span class="hljs-string">&#x27;Fir&#x27;</span>, <span class="hljs-string">&#x27;Sat&#x27;</span>],<br>                <span class="hljs-attr">color</span>: <span class="hljs-string">&#x27;#E9C46A&#x27;</span>,<br>                <span class="hljs-attr">fontStyle</span>: <span class="hljs-string">&#x27;normal&#x27;</span>,<br>                <span class="hljs-attr">fontWeight</span>: <span class="hljs-string">&#x27;bold&#x27;</span>,<br>                <span class="hljs-attr">fontFamily</span>: <span class="hljs-string">&#x27;Arial&#x27;</span>,<br>                <span class="hljs-attr">align</span>: <span class="hljs-string">&#x27;left&#x27;</span><br>            &#125;,<br>            <span class="hljs-attr">monthLabel</span>: &#123;<br>                <span class="hljs-attr">show</span>: <span class="hljs-literal">true</span>,<br>                <span class="hljs-attr">margin</span>: <span class="hljs-number">12</span>,<br>                <span class="hljs-attr">nameMap</span>: <span class="hljs-string">&#x27;EN&#x27;</span>,<br>                <span class="hljs-attr">color</span>: <span class="hljs-string">&quot;#fff&quot;</span><br><br>            &#125;<br>        &#125;,<br>        <span class="hljs-attr">series</span>: &#123;<br>            <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;heatmap&#x27;</span>,<br>            <span class="hljs-attr">coordinateSystem</span>: <span class="hljs-string">&#x27;calendar&#x27;</span>,<br>            <span class="hljs-comment">//series的data只接受数组数据，不接受键值对</span><br>            <span class="hljs-attr">data</span>: getVirtualData(thisYear)<br>        &#125;<br>    &#125;;<br><br>&#123;% endecharts %&#125;<br></code></pre></div></td></tr></table></figure>
+<p><strong>不足</strong></p>
+<ol>
+<li>是一种间接的途径获取的数据集合，因为通过EJS注入元素后我将这些直接渲染的数据设置了隐藏，然后再通过<code>document.getElementsByClassName()</code>来存储</li>
+</ol>
+<p>但这是一种取巧的办法，因为对于fluid主题的开发我并不完全明白其完整的工作机制，只通过一些时间摸索出以下结论</p>
+<ul>
+<li>EJS是为了更快捷方便的在模板中生成HTML代码，可以通过简单的标签来引用变量</li>
+<li>HEXO博客中的一些变量只能通过EJS语句来调用和访问，不能通过<code>JavaScript</code>代码来获取</li>
+</ul>
+<ol>
+<li>生成的echarts图并不能即时适配屏幕大小，不够毕竟热点图在电脑这样的设备下选择横向展示，移动设备上可以采取纵向显示（待完善）</li>
+</ol>
+<p><strong>改进优化</strong></p>
+<p>1️⃣使用<code>iframe</code>嵌入写好的图表页面，但需要调整好页面的大小，适应主题模板的样式</p>
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/html/....&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;600&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;topFrame&quot;</span> <span class="hljs-attr">scrolling</span>=<span class="hljs-string">&quot;yes&quot;</span> <span class="hljs-attr">noresize</span>=<span class="hljs-string">&quot;noresize&quot;</span> <span class="hljs-attr">frameborder</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;topFrame&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>缺陷</li>
+</ul>
+<ol>
+<li><p>不能借助ejs引用全局变量，在html中不能这样，因为自定义的html都设置了跳过渲染，也就不会启用EJS语法</p>
+</li>
+<li><p>因此这种方法只能用于引入一些静态页面，不能访问网站内部的变量</p>
+</li>
+</ol>
+<p>2️⃣绘制的图表并不具备自适应界面的大小而随之变化，需要添加如下代码</p>
+<h4 id="网站数据统计制图"><a href="#网站数据统计制图" class="headerlink" title="网站数据统计制图"></a>网站数据统计制图</h4><h5 id="1️⃣方案"><a href="#1️⃣方案" class="headerlink" title="1️⃣方案"></a>1️⃣方案</h5><ul>
+<li>使用旭日图，这种相当于饼状图和柱状图的结合，能够更加形象的体现父类与子类的层级关系，以及各父类之间的统计量上的差别</li>
+<li>使用饼状图，将各分类文章数、文章数量、各标签对应的文章数、文章的访问量、网站访问量都统计下来【南丁格尔图，比较形象】</li>
+</ul>
+<h5 id="2️⃣思路"><a href="#2️⃣思路" class="headerlink" title="2️⃣思路"></a>2️⃣思路</h5><ul>
+<li>需要单独建立一个页面，专门设置为统计数据的展示</li>
+<li>如何打通这个流程，一个新的页面渲染，要获取到后台的数据，并且是注册在导航栏中的页面</li>
+</ul>
+<h5 id="3️⃣具体操作"><a href="#3️⃣具体操作" class="headerlink" title="3️⃣具体操作"></a>3️⃣具体操作</h5><ol>
+<li>需要注册一个<code>analyzer</code>模板，建立文件有<code>analyzer.ejs</code>，在全局变量<code>_pages/variables</code>中添加对应要设置的一些样式信息（可忽略），然后在<code>config.fluid.yml</code>中增加一栏专门设置这些信息，也可以不这样做，直接沿用博客中其他相似的模板配置</li>
+<li><del>在<code>generator/pages.js</code>中添加渲染生成<code>analyzer</code>页面的代码</del></li>
+<li>在<code>analyzer.ejs</code>引入博客全局变量<code>site.categories、site.tags</code>等快速渲染至模板中，然后在<code>analyzer/index.md</code>中仿造我的关于页面那样，进行<code>echarts</code>的制图</li>
+</ol>
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a><strong>问题</strong></h5><ol>
+<li><p>经过研究，在<code>generator/pages.js</code>中添加生成指定页面的代码能够正常实现其功能的前提是：</p>
+<p>​  该页面是不需要渲染Markdown文件内容的页面，由于我需要创建的数据统计页面和<code>about</code>本质上是一种，需要通过创建自定义页面的方法来渲染</p>
+<p>​  因此在这一步我走了弯路，没有弄清机制，导致思考方向错误。</p>
+</li>
+<li><p>自定义页面的生成很简单，只需要执行以下代码</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">hexo new page analyzer<br>//会生成/<span class="hljs-built_in">source</span>/analyzer/index.md文件<br>//编写index.md的内容即可<br>hexo clean&amp;&amp;hexo g&amp;&amp;hexo s<br>//重新渲染启动,就可以看到analyzer的出现，当然不要忘了在config.fluid,yml中<br></code></pre></div></td></tr></table></figure>
+<ol>
+<li>使用指定页面生成与否的方式如下写法，需要加载数据和布局，并指定生成index.html</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ejs">//------------custom by sherlock--------<br>// generate about page<br>hexo.extend.generator.register(&#x27;about&#x27;, function(locals) &#123;<br>  if (this.theme.config.about.enable !== false) &#123;<br>    return &#123;<br>      path  : &#x27;about/index.html&#x27;,<br>      data  : locals.theme,//读取配置文件的数据<br>      layout: &#x27;about&#x27;<br>    &#125;;<br>  &#125;<br>&#125;);<br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>我本想通过上述代码尝试能否控制<code>about</code>页面的显示，但通过测试，这串代码丝毫不起作用，不过方法还是有的，要想取消<code>about</code>的显示，在主题配置文件中修改导航栏菜单的配置选项、去掉<code>about</code>的字段，让我们无法通过导航栏打开（但这丝毫不影响我们通过URL直接访问）</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yaml"><span class="hljs-attr">menu:</span><br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;home&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-home-fill&quot;</span> &#125;<br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;archive&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/archives/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-archive-fill&quot;</span> &#125;<br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;category&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/categories/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-category-fill&quot;</span> &#125;<br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;tag&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/tags/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-tags-fill&quot;</span> &#125;<br>  <span class="hljs-comment">#去掉此处</span><br>  <span class="hljs-comment"># - &#123; key: &quot;about&quot;, link: &quot;/about/&quot;, icon: &quot;iconfont icon-user-fill&quot; &#125;</span><br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;labs&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/labs/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-exp-fill&quot;</span> &#125;<br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;analyzer&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/analyzer/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-code&quot;</span> &#125;<br></code></pre></div></td></tr></table></figure>
+<hr>
+<h3 id="默认配置信息"><a href="#默认配置信息" class="headerlink" title="默认配置信息"></a>默认配置信息</h3><ul>
+<li>CSS样式</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs css">(<span class="hljs-attribute">color</span><span class="hljs-selector-class">.link_hover_color</span>&quot;, &quot;<span class="hljs-selector-id">#30a9de</span>&quot;)<br>$link-hover-<span class="hljs-attribute">color</span>-dark = theme-config(&quot;<span class="hljs-attribute">color</span><span class="hljs-selector-class">.link_hover_color_dark</span>&quot;, &quot;<span class="hljs-selector-id">#30a9de</span>&quot;)<br></code></pre></div></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/">技术拓展</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/">博客部署</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Web-Dev/">Web-Dev</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%88%9B%E6%96%B0%E4%BC%98%E5%8C%96/">创新优化</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/anki01/">
+                        <span class="hidden-mobile">anki个性化开发</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <p>CopyRight © 2021 ~ 2022</p> <a href="https://github.com/Cuber-final" target="_blank" rel="nofollow noopener"><span>Sherlock</span></a> <i class="iconfont icon-mini-program-fill"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">网站已运行...</span> <script src="/js/duration.js"></script> </div>
+
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+<!-- 这里修改不蒜子的使用，看能否初始化-->
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

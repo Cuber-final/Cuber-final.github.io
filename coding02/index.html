@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/laker.svg">
+  <link rel="icon" href="/img/laker.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="google-site-verification" content="2lie0HSYu0BL3K9XgWOSvZIHL2IMueE6Xxix8D6E7TU" />
+  <meta name="baidu-site-verification" content="code-LwoxekwucD" />
+  
+  <meta name="theme-color" content="#264653">
+  <meta name="author" content="峰攀">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="复试C++知识储备">
+<meta property="og:type" content="article">
+<meta property="og:title" content="复试C++">
+<meta property="og:url" content="https://cuber-final.github.io/coding02/">
+<meta property="og:site_name" content="峰攀">
+<meta property="og:description" content="复试C++知识储备">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-21T02:27:59.788Z">
+<meta property="article:author" content="峰攀">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>复试C++ - 峰攀</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/monokai-sublime.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myStyle.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"cuber-final.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"KP6pnts6yruKOQpghfXRkz05-gzGzoHsz","app_key":"D7Tv6MORJ5VHKN6PDYoYNLDF","server_url":"https://kp6pnts6.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>峰攀</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/analyzer/">
+                <i class="iconfont icon-code"></i>
+                站内统计
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/timelines/">
+                <i class="iconfont icon-comment"></i>
+                随笔
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/matrix.31qsai9476e0.webp') no-repeat center center;background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="复试C++">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-21 00:00" pubdate>
+        2022年2月21日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- LeanCloud 统计文章PV -->
+      <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="leancloud-page-views"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">复试C++</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：17 分钟前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="C-复试"><a href="#C-复试" class="headerlink" title="C++ 复试"></a>C++ 复试</h2><ul>
+<li>关于类的使用和方法定义</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pointOut</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span>;<br><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-keyword">int</span> k, t, f;<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Test::pointOut</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a)</span></span><br><span class="hljs-function"></span>&#123;<br>    k = a;<br>    t = a * <span class="hljs-number">10</span>;<br>    f = a / <span class="hljs-number">2</span>;<br>    cout &lt;&lt; k &lt;&lt; <span class="hljs-string">&quot;  &quot;</span> &lt;&lt; t &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; f;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    Test myTest;<br>    myTest.<span class="hljs-built_in">pointOut</span>(<span class="hljs-number">10</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<h4 id="条件编译指令"><a href="#条件编译指令" class="headerlink" title="条件编译指令"></a>条件编译指令</h4><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/*-------------------1-----------------------*/</span><br><span class="hljs-comment">//区分if-else语句</span><br><span class="hljs-comment">//条件编译的作用正式&quot;选择性对代码编译&quot;</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> 常量表达式1</span><br>    程序段<span class="hljs-number">1</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> 常量表达式2</span><br>      程序段<span class="hljs-number">2</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br>        程序段<span class="hljs-number">3</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-comment">/*-------------------2-----------------------*/</span><br><span class="hljs-comment">//ifdef语句</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> 标识符</span><br>       程序段<span class="hljs-number">1</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br>     程序段<span class="hljs-number">2</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><span class="hljs-comment">/*-------------------3-----------------------*/</span><br><span class="hljs-comment">//ifndef语句</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> 标识符</span><br>       程序段<span class="hljs-number">1</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">else</span></span><br>     程序段<span class="hljs-number">2</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><br><span class="hljs-comment">//类型3常用来避免在头文件中重复引入</span><br>比如：文件<span class="hljs-number">1</span>和文件<span class="hljs-number">2</span>同时引入head.h<br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;head.h&quot;</span></span><br>则需要在head.h写<br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> HEAD_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> HEAD_H</span><br>     ····<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></div></td></tr></table></figure>
+<h4 id="数组、指针、字符串"><a href="#数组、指针、字符串" class="headerlink" title="数组、指针、字符串"></a>数组、指针、字符串</h4><h5 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h5><ul>
+<li>易混淆的点，指针指向常量与常量指针</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *q = &amp;a;<span class="hljs-comment">//定义一个指向整形常量 a 的指针</span><br>*q = <span class="hljs-number">10</span>;<span class="hljs-comment">//不能对该指针所指向的内容进行修改，只可以访问 read-only</span><br><span class="hljs-comment">/*-----------*/</span><br><span class="hljs-keyword">int</span> a = <span class="hljs-number">3</span>;<br><span class="hljs-keyword">int</span> b = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">int</span> *<span class="hljs-keyword">const</span> q = &amp;a;<span class="hljs-comment">//声明一个常量指针,不可修改其内容（即不能更换它指向的变量）</span><br>q = &amp;b;<span class="hljs-comment">//报错</span><br><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>指向数组的指针</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> a[<span class="hljs-number">10</span>];<br><span class="hljs-keyword">int</span> *p=a;<br><span class="hljs-keyword">int</span> *q=&amp;a[<span class="hljs-number">0</span>];<span class="hljs-comment">//两句等价,都是指向数组首地址</span><br><br><span class="hljs-comment">//通过指针访问数组</span><br>cout&lt;&lt;*p;<span class="hljs-comment">//即 a[0]</span><br>cout&lt;&lt; *(p+i)<span class="hljs-comment">//即 a[i]</span><br>*(p+i)=*(a+i)=a[i]<br></code></pre></div></td></tr></table></figure>
+<h4 id="使用VSCODE-CMake-编译C-项目"><a href="#使用VSCODE-CMake-编译C-项目" class="headerlink" title="使用VSCODE+CMake 编译C++项目"></a>使用VSCODE+CMake 编译C++项目</h4><ul>
+<li>有点复杂，但应该是我没有理清楚思路<ul>
+<li>用C++实现优先级队列</li>
+</ul>
+</li>
+<li>但一次实践复习了不少知识<ul>
+<li>C++面向对象编程</li>
+<li>c++工程开发的步骤</li>
+<li>大根堆小根堆的实现-优先级队列</li>
+</ul>
+</li>
+</ul>
+<h6 id="1️⃣-动态数组"><a href="#1️⃣-动态数组" class="headerlink" title="1️⃣ 动态数组"></a>1️⃣ 动态数组</h6><ul>
+<li>数组空间的首地址十分重要，不论是作为参数还是直接指向整个数组，首地址就相当于一个指向标，我们可以通过指针访问</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">int</span> *p;<span class="hljs-comment">//声明一个整型数组，为其创建首地址的空间</span><br>p = (<span class="hljs-keyword">int</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) * (<span class="hljs-number">10</span>)); <span class="hljs-comment">//声明了动态数组的空间大小为10个整型数据的空间</span><br><span class="hljs-built_in">memset</span>(p, <span class="hljs-number">0</span>, <span class="hljs-number">10</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>));<span class="hljs-comment">//初始化数组内所有元素为0</span><br></code></pre></div></td></tr></table></figure>
+<h6 id="2️⃣-实现优先级队列"><a href="#2️⃣-实现优先级队列" class="headerlink" title="2️⃣ 实现优先级队列"></a>2️⃣ 实现优先级队列</h6><ul>
+<li>需要将优先级队列封装成一个类，然后通过主程序生成对象来调用其内部的方法，也就是面向对象编程，先编写头文件</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">/*-----------------------myqueue.h----------------*/</span><br><span class="hljs-comment">//头文件声明myqueue类，这样可以被main.cpp调用，通过myqueue.cpp实现该类的具体方法，分工明确，而且独立性强</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> MYQUEUE__H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MYQUEUE__H</span><br><br><span class="hljs-comment">//定义一个优先级队列，局限于比较整形数据</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">priQueue</span></span><br><span class="hljs-class">&#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">//放置方法,参数为 容量大小和堆的类型</span><br>    <span class="hljs-built_in">priQueue</span>(<span class="hljs-keyword">bool</span> compFunc);<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span></span>; <span class="hljs-comment">//获取首元素，最大/小</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">size</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">top</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span></span>;<br><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-comment">//cap为默认容量，comp表示建堆方式，curSize为当前已入队元素数量</span><br>    <span class="hljs-keyword">int</span> cap = <span class="hljs-number">100</span>, comp, curSize = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> *pq;          <span class="hljs-comment">//初始队列</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span></span>; <span class="hljs-comment">//上浮</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">sink</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span></span>; <span class="hljs-comment">//下沉</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">exchange</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>;<span class="hljs-comment">//交换两数</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">less</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>;    <span class="hljs-comment">//用于小根堆</span><br>    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">greater</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>; <span class="hljs-comment">//用于大根堆</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">parent</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span>;<span class="hljs-comment">//获得父节点的索引</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span>;<span class="hljs-comment">//获取左孩子索引</span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span>;<span class="hljs-comment">//获取右孩子索引</span><br>&#125;;<br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br></code></pre></div></td></tr></table></figure>
+<ul>
+<li>类方法的具体实现</li>
+</ul>
+<p>实现优先级队列实际就是数据结构里的大根堆小根堆的思想，常见的大小根堆都是完全二叉树，又叫二叉堆。实现二叉堆的思想并不复杂，以实现大根堆为例子，主要步骤如下：</p>
+<ol>
+<li>二叉堆其实就是一种特殊的二叉树（完全二叉树），只不过存储在数组里。一般的链表二叉树，我们操作节点的指针，而在数组里，我们把数组索引作为指针</li>
+<li>将数组中第一使用的元素<code>arr[1]</code>作为二叉树的根的话，根据完全二叉树的性质，每个节点的父节点及其左右孩子的索引都可以通过简单的运算得到，而<strong>大/小根堆</strong>的性质特殊在于：（此处我们只讨论整型数据，其他数据类型类似思想）每个节点的数值都<strong>大于等于/小于等于</strong>其子节点的数值；那么<code>arr[1]</code>就是最值元素了</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">//获取右孩子索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-comment">//获取左孩子索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">lchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root * <span class="hljs-number">2</span>;<br>&#125;<br><span class="hljs-comment">//获取父节点索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">parent</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root / <span class="hljs-number">2</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<ol>
+<li>由于上述的计算涉及乘除法，显然我们不能使用<code>arr[0]</code>作为首元素；实现二叉堆主要涉及操作如下面代码定义</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><br><span class="hljs-comment">/*------------------myqueue.cpp-------------------------*/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;myqueue.h&quot;</span></span><br><br><span class="hljs-comment">//实现priQueue的构造函数</span><br>priQueue::<span class="hljs-built_in">priQueue</span>(<span class="hljs-keyword">bool</span> compFunc)<br>&#123;<br><br>    pq = (<span class="hljs-keyword">int</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>) * (cap + <span class="hljs-number">1</span>));<br>    <span class="hljs-built_in">memset</span>(pq, <span class="hljs-number">0</span>, (cap + <span class="hljs-number">1</span>) * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">int</span>));<br>    <span class="hljs-keyword">if</span> (compFunc == <span class="hljs-literal">true</span>)<br>    &#123;<br>        comp = <span class="hljs-number">1</span>; <span class="hljs-comment">//建立大根堆,否则为小根堆</span><br>    &#125;<br>    comp = compFunc; <span class="hljs-comment">//设置好建堆方式</span><br>&#125;;<br><br><span class="hljs-comment">//获取首元素</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::top</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> pq[<span class="hljs-number">1</span>];<br>&#125;;<br><br><span class="hljs-comment">//返回堆大小</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::size</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> curSize;<br>&#125;;<br><br><span class="hljs-comment">//判断是否为空队列</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">priQueue::isEmpty</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> curSize == <span class="hljs-number">0</span>;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">priQueue::insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e)</span></span><br><span class="hljs-function"></span>&#123;<br>    curSize++; <span class="hljs-comment">//索引0无法参与寻找双亲与孩子节点的计算，必须从1开始</span><br>    <span class="hljs-comment">//插入到队尾</span><br>    pq[curSize] = e;<br>    <span class="hljs-comment">//上浮</span><br>    <span class="hljs-built_in">swim</span>(curSize);<br>&#125;;<br><br><span class="hljs-comment">//删除并返回当前队列中的最值</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::pop</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> max = pq[<span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">exchange</span>(<span class="hljs-number">1</span>, curSize);<br>    pq[curSize] = <span class="hljs-number">0</span>;<br>    curSize--;<br>    <span class="hljs-built_in">sink</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> max;<br>&#125;<br>/<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">priQueue::greater</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> pq[x] &gt; pq[y];<br>&#125;;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">priQueue::less</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> pq[x] &lt; pq[y];<br>&#125;;<br><span class="hljs-comment">//下沉,显然只能用到队首和队尾元素进行改变</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">priQueue::sink</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//大根堆</span><br>    <span class="hljs-keyword">if</span> (comp == <span class="hljs-literal">true</span>)<br>    &#123;<br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">lchild</span>(k) &lt;= curSize)<br>        &#123;<br>            <span class="hljs-comment">//假设左孩子更大</span><br>            <span class="hljs-keyword">int</span> temp = <span class="hljs-built_in">lchild</span>(k);<br>            <span class="hljs-comment">//看右孩子是否比左孩子更大</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">rchild</span>(k) &lt;= curSize &amp;&amp; <span class="hljs-built_in">less</span>(temp, <span class="hljs-built_in">rchild</span>(k)))<br>            &#123;<br>                temp = <span class="hljs-built_in">rchild</span>(k);<br>            &#125;<br>            <span class="hljs-comment">//如果左右都不够</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">less</span>(temp, k))<br>            &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-built_in">exchange</span>(temp, k);<br>            k = temp;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">else</span><br>    &#123; <span class="hljs-comment">//小根堆</span><br>        <span class="hljs-keyword">while</span> (<span class="hljs-built_in">lchild</span>(k) &lt;= curSize)<br>        &#123;<br>            <span class="hljs-comment">//假设左孩子更小</span><br>            <span class="hljs-keyword">int</span> temp = <span class="hljs-built_in">lchild</span>(k);<br>            <span class="hljs-comment">//看右孩子是否比左孩子更小</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">rchild</span>(k) &lt;= curSize &amp;&amp; <span class="hljs-built_in">greater</span>(temp, <span class="hljs-built_in">rchild</span>(k)))<br>            &#123;<br>                temp = <span class="hljs-built_in">rchild</span>(k);<br>            &#125;<br>            <span class="hljs-comment">//如果左右都不够</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">greater</span>(temp, k))<br>            &#123;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>            <span class="hljs-built_in">exchange</span>(temp, k);<br>            k = temp;<br>        &#125;<br>    &#125;<br>&#125;;<br><span class="hljs-comment">//上浮</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">priQueue::swim</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">//大根堆,父节点比该节点小时上浮</span><br>    <span class="hljs-keyword">if</span> (comp == <span class="hljs-literal">true</span>)<br>    &#123;<br>        <span class="hljs-keyword">while</span> (k &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">less</span>(<span class="hljs-built_in">parent</span>(k), k))<br>        &#123;<br>            <span class="hljs-built_in">exchange</span>(<span class="hljs-built_in">parent</span>(k), k);<br>            k = <span class="hljs-built_in">parent</span>(k); <span class="hljs-comment">//k上升为父节点</span><br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">//小根堆反之</span><br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-keyword">while</span> (k &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">greater</span>(<span class="hljs-built_in">parent</span>(k), k))<br>        &#123;<br>            <span class="hljs-built_in">exchange</span>(<span class="hljs-built_in">parent</span>(k), k);<br>            k = <span class="hljs-built_in">parent</span>(k); <span class="hljs-comment">//k上升为父节点</span><br>        &#125;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">//交换两数</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">priQueue::exchange</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> temp = pq[x];<br>    pq[x] = pq[y];<br>    pq[y] = temp;<br>&#125;;<br><br><span class="hljs-comment">//获取右孩子索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::rchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-comment">//获取左孩子索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::lchild</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root * <span class="hljs-number">2</span>;<br>&#125;<br><span class="hljs-comment">//获取父节点索引</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">priQueue::parent</span><span class="hljs-params">(<span class="hljs-keyword">int</span> root)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> root / <span class="hljs-number">2</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%88%B7%E9%A2%98/">刷题</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%88%B7%E9%A2%98/C-%E7%AE%97%E6%B3%95/">C++算法</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/cnn01/">
+                        <span class="hidden-mobile">卷积神经网络</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <p>CopyRight © 2021 ~ 2022</p> <a href="https://github.com/Cuber-final" target="_blank" rel="nofollow noopener"><span>Sherlock</span></a> <i class="iconfont icon-mini-program-fill"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">网站已运行...</span> <script src="/js/duration.js"></script> </div>
+
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+<!-- 这里修改不蒜子的使用，看能否初始化-->
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
