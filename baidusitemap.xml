@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Cuber-final.github.io/thinkTimes/</loc>
-    <lastmod>2022-04-21</lastmod>
+    <loc>https://Cuber-final.github.io/coding02/</loc>
+    <lastmod>2022-06-15</lastmod>
+  </url>
+  <url>
+    <loc>https://Cuber-final.github.io/cnn01/</loc>
+    <lastmod>2022-06-15</lastmod>
+  </url>
+  <url>
+    <loc>https://Cuber-final.github.io/django-dev/</loc>
+    <lastmod>2022-06-15</lastmod>
+  </url>
+  <url>
+    <loc>https://Cuber-final.github.io/devstack/</loc>
+    <lastmod>2022-06-15</lastmod>
   </url>
   <url>
     <loc>https://Cuber-final.github.io/anki01/</loc>
@@ -15,18 +27,6 @@
   <url>
     <loc>https://Cuber-final.github.io/deployBlog/</loc>
     <lastmod>2022-04-21</lastmod>
-  </url>
-  <url>
-    <loc>https://Cuber-final.github.io/coding02/</loc>
-    <lastmod>2022-04-21</lastmod>
-  </url>
-  <url>
-    <loc>https://Cuber-final.github.io/django-dev/</loc>
-    <lastmod>2022-03-02</lastmod>
-  </url>
-  <url>
-    <loc>https://Cuber-final.github.io/cnn01/</loc>
-    <lastmod>2022-03-02</lastmod>
   </url>
   <url>
     <loc>https://Cuber-final.github.io/coding01/</loc>
