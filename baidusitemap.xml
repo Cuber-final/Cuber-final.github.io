@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://Cuber-final.github.io/deployBlog/</loc>
+    <lastmod>2022-07-02</lastmod>
+  </url>
+  <url>
     <loc>https://Cuber-final.github.io/coding02/</loc>
     <lastmod>2022-06-15</lastmod>
   </url>
@@ -22,10 +26,6 @@
   </url>
   <url>
     <loc>https://Cuber-final.github.io/fluid01/</loc>
-    <lastmod>2022-04-21</lastmod>
-  </url>
-  <url>
-    <loc>https://Cuber-final.github.io/deployBlog/</loc>
     <lastmod>2022-04-21</lastmod>
   </url>
   <url>

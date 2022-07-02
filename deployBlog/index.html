@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/deployBlog/dns.1fwym169jj9c.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/deployBlog/parmalinks.5ri33vixsgs0.webp">
 <meta property="article:published_time" content="2022-01-28T08:53:16.000Z">
-<meta property="article:modified_time" content="2022-04-21T02:33:42.391Z">
+<meta property="article:modified_time" content="2022-07-02T13:53:56.299Z">
 <meta property="article:author" content="峰攀">
 <meta property="article:tag" content="Web-Dev">
 <meta property="article:tag" content="创新优化">
@@ -228,7 +228,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      42 分钟
+      43 分钟
     </span>
   
 
@@ -269,7 +269,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2 个月前
+                  本文最后更新于：1 小时前
                 
               </p>
             
@@ -313,8 +313,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-comment"># 通过Windows 命令行 输入一下命令，查找你网站的IP地址</span><br>ping username.github.io <br></code></pre></div></td></tr></table></figure>
 <ul>
 <li>然后找到 <code>解析设置</code> ，并添加记录<ul>
-<li>主机记录：<code>www</code>；记录类型：<code>A</code>；记录值为 GitHub Pages 域名的 IP，即 你ping到的IP地址。</li>
-<li>主机记录：<code>@</code>；记录类型：<code>CNAME</code>；记录值为 GitHub Pages 域名，即 <code>username.github.io</code></li>
+<li>主机记录：@；记录类型：A；记录值为 GitHub Pages 域名的 IP,，即 你ping到的IP地址。（@表示域名前面的前缀是泛指的）</li>
+<li>主机记录：www；记录类型：CNAME；记录值为 GitHub Pages 域名，即 username.github.io （这里相当于把你的域名设置成了username.github.io的别名）</li>
 <li>CNAME可以将多个访问地址映射对应同一个IP地址，在这里也就实现了既可以通过你的 <code>username.github.io</code>来访问你的网站，也可以通过你指定的新域名来访问你的网站</li>
 </ul>
 </li>
