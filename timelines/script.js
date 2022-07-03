@@ -8,6 +8,10 @@ $(document).ready(function() {
             cardList[index].classList.add('js--fadeInLeft')
         }
     }
+
+    var remove=document.getElementsByClassName('col-12')
+    remove[0].classList.remove('col-md-10')
+
 });
 
 $(function(){
