@@ -26,7 +26,7 @@
 <meta property="og:description" content="曾经也使用Django开发过Web-APP，不得不说这个框架为我提升了不少前后端开发中的流畅度">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-10-02T13:02:44.000Z">
-<meta property="article:modified_time" content="2022-06-15T08:17:55.316Z">
+<meta property="article:modified_time" content="2022-12-31T08:44:07.669Z">
 <meta property="article:author" content="Cuber">
 <meta property="article:tag" content="Web-Dev">
 <meta name="twitter:card" content="summary_large_image">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      5k 字
     </span>
   
 
@@ -240,17 +240,14 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：7 个月前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
             <div class="markdown-body">
               <h3 id="Django学习以及个人博客制作路程"><a href="#Django学习以及个人博客制作路程" class="headerlink" title="Django学习以及个人博客制作路程"></a>Django学习以及个人博客制作路程</h3><hr>
 <h5 id="服务器部署步骤记录以及问题的解决"><a href="#服务器部署步骤记录以及问题的解决" class="headerlink" title="服务器部署步骤记录以及问题的解决"></a>服务器部署步骤记录以及问题的解决</h5><h6 id="修改hostname"><a href="#修改hostname" class="headerlink" title="修改hostname"></a>修改hostname</h6><ul>
-<li><p>最好最直接不报错的办法：</p>
-</li>
-<li><p>在127.0.0.1 localhost 后面加上主机名称(hostname) 即可, /etc/hosts 内容修改成如下:  直接将hostname（abc）追加到后面</p>
-</li>
+<li>最好最直接不报错的办法：在127.0.0.1 localhost 后面加上主机名称(hostname) 即可, /etc/hosts 内容修改成如下:  直接将hostname（abc）追加到后面</li>
 </ul>
 <h6 id="为了安全起见"><a href="#为了安全起见" class="headerlink" title="为了安全起见"></a>为了安全起见</h6><ul>
 <li><p>将网站项目以及部署的文件全部保存在一个用户目录下而非root目录</p>
@@ -378,7 +375,7 @@
 <li>HTML的编写不熟练</li>
 </ul>
 <hr>
-<h5 id="后台设计："><a href="#后台设计：" class="headerlink" title="后台设计："></a>后台设计：</h5><ul>
+<h5 id="后台设计"><a href="#后台设计" class="headerlink" title="后台设计"></a>后台设计</h5><ul>
 <li><p>先了解Xadmin的使用与项目的结合</p>
 </li>
 <li><p>后台的板块设计，功能设计</p>
@@ -437,21 +434,16 @@
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo npm install -g n<br>sudo n stable<br>PATH=<span class="hljs-variable">$PATH</span><br><br>//修改指定端口连接服务器并发布<br>deploy:<br>- <span class="hljs-built_in">type</span>: <span class="hljs-string">&#x27;git&#x27;</span><br>  repo:<br>     site: ssh://username@ip:port/path/blog.git,master<br>- <span class="hljs-built_in">type</span>: baidu_url_submitter <br><br><br><span class="hljs-comment">#查看远程连接端口</span><br>netstat -tunlp | grep ssh<br><span class="hljs-comment">#修改ssh服务配置</span><br>vim /etc/ssh/sshd_config<br><br><span class="hljs-comment">#重启ssh服务使配置生效</span><br>service ssh restart<br><br></code></pre></div></td></tr></table></figure>
 <h4 id="HEXO博客的自定义设计"><a href="#HEXO博客的自定义设计" class="headerlink" title="HEXO博客的自定义设计"></a>HEXO博客的自定义设计</h4><ul>
-<li>如何修改主题样式</li>
-<li>修改footer样式，别搞这么多东西</li>
+<li>在原有主题基础上修改主题样式，实现自己想要的效果</li>
 </ul>
 <h4 id="进阶功能"><a href="#进阶功能" class="headerlink" title="进阶功能"></a>进阶功能</h4><ul>
-<li>Picx图床（免费，GitHub作为仓库，网络上是公开的）<ul>
-<li>暂时使用七牛云</li>
-</ul>
-</li>
+<li>Picx图床（免费，GitHub作为仓库，网络上是公开的）</li>
 <li>资源压缩</li>
-<li>网站地图（百度搜索，谷歌搜索），知识共享</li>
-<li>能否使用echarts工具做一些有趣的工具</li>
-<li>为网站添加一些在线工具（由于可以直接创建一个新页面在菜单栏并跳转，且新页面的文本可用html语句编写，就可以用于开发新页面）</li>
+<li>网站地图（百度搜索，谷歌搜索），知识公开共享</li>
+<li>能否使用echarts工具做一些有趣的数据可视化图形</li>
+<li>为网站添加一些在线工具</li>
 </ul>
-<hr>
-<h5 id="总结与反思"><a href="#总结与反思" class="headerlink" title="总结与反思"></a>总结与反思</h5>
+
             </div>
             <hr>
             <div>

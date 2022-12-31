@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://cuber-final.github.io/anki01/</loc>
+    <loc>https://cuber-final.github.io/django-dev/</loc>
     
-    <lastmod>2022-12-29</lastmod>
+    <lastmod>2022-12-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://cuber-final.github.io/cnn01/</loc>
+    <loc>https://cuber-final.github.io/anki01/</loc>
     
-    <lastmod>2022-12-29</lastmod>
+    <lastmod>2022-12-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -21,6 +21,15 @@
   
   <url>
     <loc>https://cuber-final.github.io/about/</loc>
+    
+    <lastmod>2022-12-31</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://cuber-final.github.io/cnn01/</loc>
     
     <lastmod>2022-12-29</lastmod>
     
@@ -57,15 +66,6 @@
   
   <url>
     <loc>https://cuber-final.github.io/coding02/</loc>
-    
-    <lastmod>2022-06-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://cuber-final.github.io/django-dev/</loc>
     
     <lastmod>2022-06-15</lastmod>
     
@@ -165,14 +165,14 @@
   </url>
   
   <url>
-    <loc>https://cuber-final.github.io/tags/Web-Dev/</loc>
+    <loc>https://cuber-final.github.io/tags/C/</loc>
     <lastmod>2022-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://cuber-final.github.io/tags/C/</loc>
+    <loc>https://cuber-final.github.io/tags/Web-Dev/</loc>
     <lastmod>2022-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -202,14 +202,14 @@
   </url>
   
   <url>
-    <loc>https://cuber-final.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/Anki/</loc>
+    <loc>https://cuber-final.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/</loc>
     <lastmod>2022-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://cuber-final.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2/</loc>
+    <loc>https://cuber-final.github.io/categories/%E6%8A%80%E6%9C%AF%E6%8B%93%E5%B1%95/Anki/</loc>
     <lastmod>2022-12-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
