@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://Cuber-final.github.io/anki01/</loc>
+    <lastmod>2022-12-29</lastmod>
+  </url>
+  <url>
+    <loc>https://Cuber-final.github.io/cnn01/</loc>
+    <lastmod>2022-12-29</lastmod>
+  </url>
+  <url>
     <loc>https://Cuber-final.github.io/devstack/</loc>
     <lastmod>2022-07-02</lastmod>
   </url>
@@ -13,16 +21,8 @@
     <lastmod>2022-06-15</lastmod>
   </url>
   <url>
-    <loc>https://Cuber-final.github.io/cnn01/</loc>
-    <lastmod>2022-06-15</lastmod>
-  </url>
-  <url>
     <loc>https://Cuber-final.github.io/django-dev/</loc>
     <lastmod>2022-06-15</lastmod>
-  </url>
-  <url>
-    <loc>https://Cuber-final.github.io/anki01/</loc>
-    <lastmod>2022-04-21</lastmod>
   </url>
   <url>
     <loc>https://Cuber-final.github.io/fluid01/</loc>

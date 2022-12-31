@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" >
 
 
 
@@ -14,7 +14,7 @@
   <meta name="google-site-verification" content="2lie0HSYu0BL3K9XgWOSvZIHL2IMueE6Xxix8D6E7TU" />
   <meta name="baidu-site-verification" content="code-LwoxekwucD" />
   
-  <meta name="theme-color" content="#264653">
+  <meta name="theme-color" content="#52616a">
   <meta name="author" content="Cuber">
   <meta name="keywords" content="">
   
@@ -22,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="卷积神经网络">
 <meta property="og:url" content="https://cuber-final.github.io/cnn01/">
-<meta property="og:site_name" content="Cuber的学习经历">
+<meta property="og:site_name" content="Finch">
 <meta property="og:description" content="理解卷积神经网络的底层逻辑，研究其应用意义与方法。作为毕业设计的预备知识">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/conv_formula.4q71ccxhbuw0.webp">
@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/cross_entropy.26s9saho95b4.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/useCE.3uufxzumxye0.webp">
 <meta property="article:published_time" content="2022-02-05T11:48:11.000Z">
-<meta property="article:modified_time" content="2022-06-15T08:19:07.335Z">
+<meta property="article:modified_time" content="2022-12-29T07:46:35.209Z">
 <meta property="article:author" content="Cuber">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="CNN">
@@ -44,7 +44,7 @@
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/Cuber-final/myblog_statics@master/posts/cnn01/conv_formula.4q71ccxhbuw0.webp">
   
   
-  <title>卷积神经网络 - Cuber的学习经历</title>
+  <title>卷积神经网络 - Finch</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -98,7 +98,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Cuber的学习经历</strong>
+      <strong>Finch</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -140,33 +140,9 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/analyzer/">
-                <i class="iconfont icon-code"></i>
-                站内统计
               </a>
             </li>
           
@@ -190,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/timelines/">
                 <i class="iconfont icon-comment"></i>
-                随笔
+                思绪
               </a>
             </li>
           
@@ -202,11 +178,6 @@
             </a>
           </li>
         
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
         
       </ul>
     </div>
@@ -281,7 +252,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：3 个月前
+                  本文最后更新于：2 天前
                 
               </p>
             
@@ -428,14 +399,14 @@
 <ul>
 <li>由此我推测，对于识别多个分类的项目，是不是对应多个输入的标签来求交叉熵实现损失函数计算？</li>
 </ul>
+</blockquote>
 <script type="math/tex; mode=display">
-\begin{aligned}
-& H(P,Q)\\
-& =-\sum_{i=1}^n (x_i·\log_2y_i)\\
-& =-(x_1·\log_2y_1+x_2·\log_2y_2)\\
-& x_1=1 \quad x_2=0 \quad y_2=1-y_1
-\end{aligned}</script></blockquote>
-<h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><hr>
+  \begin{aligned}
+  & H(P,Q)\\
+  & =-\sum_{i=1}^n (x_i·\log_2y_i)\\
+  & =-(x_1·\log_2y_1+x_2·\log_2y_2)\\
+  & x_1=1 \quad x_2=0 \quad y_2=1-y_1
+  \end{aligned}</script><h5 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h5><hr>
 <h4 id="探究神经网络的前向传播与后向传播-的原理与公式的推导"><a href="#探究神经网络的前向传播与后向传播-的原理与公式的推导" class="headerlink" title="探究神经网络的前向传播与后向传播 的原理与公式的推导"></a>探究神经网络的前向传播与后向传播 的原理与公式的推导</h4><h5 id="思考一，神经网络的由来，神经网络前向传播的公式为何是这样？"><a href="#思考一，神经网络的由来，神经网络前向传播的公式为何是这样？" class="headerlink" title="思考一，神经网络的由来，神经网络前向传播的公式为何是这样？"></a>思考一，神经网络的由来，神经网络前向传播的公式为何是这样？</h5><ul>
 <li>神经网络的实现意义在于，我们能否基于给定的输入，通过某种确定的函数变换（模型）得到一个对应的输出，但有这么些特点<ul>
 <li>模型不是一开始就确定的，而是通过大量的输入并与目标样本的比对来评估并且学习，最终找到合适的模型，这就是和我们人脑学习一样的过程，神经网络就是一个函数拟合器</li>
@@ -572,7 +543,7 @@
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <p>CopyRight © 2021 ~ 2022</p> <a href="https://github.com/Cuber-final" target="_blank" rel="nofollow noopener"><span>Finch</span></a> <i class="iconfont icon-mini-program-fill"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">网站已运行...</span> <script src="/js/duration.js"></script> </div>
+     <p>CopyRight © 2022</p> <a href="https://github.com/Cuber-final" target="_blank" rel="nofollow noopener"><span>Finch</span></a> <i class="iconfont icon-mini-program-fill"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="website-duration">网站已运行...</span> <script src="/js/duration.js"></script> </div>
 
   </div>
   

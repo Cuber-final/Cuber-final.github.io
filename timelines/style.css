@@ -60,12 +60,13 @@ section {
     font-size: 18px;
     color: #335c67;
     margin-bottom: 5px;
+    font-family: "宋体",sans-serif,"Arial","Microsoft YaHei","黑体";
 }
 
 .timeline-content p{
     font-size:  16px;
     font-weight:  bold;
-    font-family:  "Arial","Microsoft YaHei","黑体","宋体",sans-serif;;
+    font-family:  "宋体",sans-serif,"Arial","Microsoft YaHei","黑体";
     color: black;
 }
 

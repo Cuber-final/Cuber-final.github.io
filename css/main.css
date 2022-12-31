@@ -360,17 +360,17 @@ img[lazyload] {
 }
 :root {
   --color-mode: 'light';
-  --body-bg-color: #264653;
-  --board-bg-color: #287271;
-  --text-color: #E9C46A;
-  --sec-text-color: #d0d0d0;
-  --post-text-color: #fff;
-  --post-heading-color: #EC8357;
-  --post-link-color: #E9C46A;
-  --link-hover-color: #BABB74;
-  --link-hover-bg-color: #264653;
-  --navbar-bg-color: #264653;
-  --navbar-text-color: #d0d0d0;
+  --body-bg-color: #ffffff;
+  --board-bg-color: #ffffff;
+  --text-color: #1e2022;
+  --sec-text-color: #52616a;
+  --post-text-color: #1e2022;
+  --post-heading-color: #1e2022;
+  --post-link-color: #52616a;
+  --link-hover-color: #1e2022;
+  --link-hover-bg-color: #ffffff;
+  --navbar-bg-color: #52616a;
+  --navbar-text-color: #f4f5f9;
   --scrollbar-color: #c4c6c9;
   --scrollbar-hover-color: #a6a6a6;
   --page-header-text-color: #fff;
@@ -384,7 +384,7 @@ img[lazyload] {
   :root:not([data-user-color-scheme]) {
     --body-bg-color: #181c27;
     --board-bg-color: #252d38;
-    --text-color: #c4c6c9;
+    --text-color: #1e2022;
     --sec-text-color: #a7a9ad;
     --post-text-color: #c4c6c9;
     --post-heading-color: #c4c6c9;
@@ -392,7 +392,7 @@ img[lazyload] {
     --link-hover-color: #30a9de;
     --link-hover-bg-color: #364151;
     --navbar-bg-color: #1f3144;
-    --navbar-text-color: #d0d0d0;
+    --navbar-text-color: #1e2022;
     --scrollbar-color: #687582;
     --scrollbar-hover-color: #9da8b3;
   }
@@ -457,7 +457,7 @@ img[lazyload] {
 [data-user-color-scheme='dark'] {
   --body-bg-color: #181c27;
   --board-bg-color: #252d38;
-  --text-color: #c4c6c9;
+  --text-color: #1e2022;
   --sec-text-color: #a7a9ad;
   --post-text-color: #c4c6c9;
   --post-heading-color: #c4c6c9;
@@ -465,7 +465,7 @@ img[lazyload] {
   --link-hover-color: #30a9de;
   --link-hover-bg-color: #364151;
   --navbar-bg-color: #1f3144;
-  --navbar-text-color: #d0d0d0;
+  --navbar-text-color: #1e2022;
   --scrollbar-color: #687582;
   --scrollbar-hover-color: #9da8b3;
 }
@@ -906,7 +906,7 @@ label {
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  color: #abc0d0;
+  color: var(--post-text-color);
   font-weight: bold;
   margin-bottom: 0.75em;
   margin-top: 2em;
@@ -967,10 +967,10 @@ label {
   background-color: transparent;
 }
 .markdown-body blockquote {
-  color: var(--sec-text-color);
+  color: #75715e;
   padding: 0.5rem 1rem;
   border-left: 8px solid #2f845e;
-  background-color: #222526;
+  background-color: #fff;
   border-radius: 4px;
 }
 .markdown-body details {
@@ -1295,7 +1295,7 @@ mjx-container,
   overflow-x: auto;
   overflow-y: hidden !important;
   padding: 0.5em 0;
-  color: #fff;
+  color: #1e2022;
 }
 mjx-container:focus,
 .mjx-container:focus,
@@ -1744,7 +1744,7 @@ post-custom {
   font-size: 0.9rem;
 }
 .note a {
-  color: #E9C46A;
+  color: #1e2022;
 }
 .note *:last-child {
   margin-bottom: 0;
@@ -1784,7 +1784,7 @@ note-default {
   font-size: 85%;
   margin: 0;
   padding: 0.2em 0.4em;
-  color: #E9C46A;
+  color: #1e2022;
 }
 .label-default {
   background: #f7f7f7;
